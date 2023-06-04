@@ -1,0 +1,68 @@
+[  {    "customerId": 1,    "orderItems": [      {"id": 1, "productName": "Laptop", "itemCost": 999.99},      {"id": 2, "productName": "Monitor", "itemCost": 299.99}    ]
+  },
+  {
+    "customerId": 2,
+    "orderItems": [
+      {"id": 3, "productName": "Keyboard", "itemCost": 49.99},
+      {"id": 4, "productName": "Mouse", "itemCost": 19.99}
+    ]
+  },
+  {
+    "customerId": 3,
+    "orderItems": [
+      {"id": 5, "productName": "Headphones", "itemCost": 79.99},
+      {"id": 6, "productName": "Speaker", "itemCost": 149.99}
+    ]
+  },
+  {
+    "customerId": 4,
+    "orderItems": [
+      {"id": 7, "productName": "Graphics Card", "itemCost": 499.99},
+      {"id": 8, "productName": "SSD", "itemCost": 199.99},
+      {"id": 9, "productName": "Power Supply", "itemCost": 99.99}
+    ]
+  },
+  {
+    "customerId": 5,
+    "orderItems": [
+      {"id": 10, "productName": "Router", "itemCost": 59.99},
+      {"id": 11, "productName": "Ethernet Cable", "itemCost": 9.99}
+    ]
+  },
+  {
+    "customerId": 6,
+    "orderItems": [
+      {"id": 12, "productName": "Smartphone", "itemCost": 799.99},
+      {"id": 13, "productName": "Smartwatch", "itemCost": 299.99}
+    ]
+  },
+  {
+    "customerId": 7,
+    "orderItems": [
+      {"id": 14, "productName": "VR Headset", "itemCost": 399.99},
+      {"id": 15, "productName": "Gaming Console", "itemCost": 499.99}
+    ]
+  },
+  {
+    "customerId": 8,
+    "orderItems": [
+      {"id": 16, "productName": "Printer", "itemCost": 199.99},
+      {"id": 17, "productName": "Scanner", "itemCost": 149.99},
+      {"id": 18, "productName": "External Hard Drive", "itemCost": 129.99}
+    ]
+  },
+  {
+    "customerId": 9,
+    "orderItems": [
+      {"id": 19, "productName": "Wireless Earbuds", "itemCost": 129.99},
+      {"id": 20, "productName": "Webcam", "itemCost": 79.99}
+    ]
+  },
+  {
+    "customerId": 10,
+    "orderItems": [
+      {"id": 21, "productName": "Microphone", "itemCost": 69.99},
+      {"id": 22, "productName": "Portable SSD", "itemCost": 149.99}
+    ]
+  }
+]

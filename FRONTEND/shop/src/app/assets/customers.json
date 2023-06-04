@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "name": "John Smith",
+      "city": "Phoenix",
+      "orderTotal": 40.99
+    },
+    {
+      "id": 2,
+      "name": "Emily Davis",
+      "city": "Los Angeles",
+      "orderTotal": 89.99
+    },
+    {
+      "id": 3,
+      "name": "David Johnson",
+      "city": "Las Vegas",
+      "orderTotal": 29.99
+    },
+    {
+      "id": 4,
+      "name": "Sarah Wilson",
+      "city": "Seattle",
+      "orderTotal": 15.99
+    }
+  ]
+  

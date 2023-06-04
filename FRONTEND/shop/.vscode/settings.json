@@ -1,4 +1,3 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic",
     "vscode.tsc.compiler.alertTSConfigChanges": "never"
 }

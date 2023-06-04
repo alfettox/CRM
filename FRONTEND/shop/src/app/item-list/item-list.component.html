@@ -1,0 +1,22 @@
+<!-- <app-nav></app-nav> -->
+<div class="product-container">
+    <div class="product-card" *ngFor="let product of products | slice:(currentPage-1)*itemsPerPage:currentPage*itemsPerPage">
+      <img [src]="product.image" alt="Product Image">
+      <h3>{{ product.name }}</h3>
+      <p>Price: {{ product.price }}</p>
+      <p>Product ID: {{ product.id }}</p>
+      <div class="quantity-controls">
+        <button (click)="increaseQuantity(product)">+</button>
+        <span>{{ product.quantity }}</span>
+        <button (click)="decreaseQuantity(product)">-</button>
+      </div>
+      <button (click)="resetQuantity(product)">Reset</button>
+    </div>
+  </div>
+<!--   
+  <app-cart></app-cart> -->
+  <div class="pagination">
+    <button [disabled]="currentPage === 1" (click)="prevPage()">Previous</button>
+    <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+  </div>
+  
