@@ -11,7 +11,7 @@ public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "supplierId", nullable = false)
-    private Long id;
+    private Integer id;
 
     @Column(name="supPhoneNum")
     private String supPhoneNum;
@@ -19,13 +19,16 @@ public class Supplier {
     @Column (name="supEmail")
     private String supEmail;
 
+    @Column (name="supName")
+    private String supName;
 
 
-    public Long getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }

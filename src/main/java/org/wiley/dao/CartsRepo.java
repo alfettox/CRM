@@ -2,7 +2,6 @@ package org.wiley.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.wiley.entity.Cart;
 import org.wiley.entity.Order;
 
 /* *
@@ -10,6 +9,5 @@ import org.wiley.entity.Order;
  * Wiley Edge 2023
  * */
 
-@Repository
-public interface CartsRepo extends JpaRepository<Cart, Integer> {
-}
+//public interface CartsRepo extends JpaRepository<Cart, Integer> {
+//}

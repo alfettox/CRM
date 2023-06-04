@@ -5,6 +5,7 @@ html {
     font-family: sans-serif;
     overflow-y: scroll;
     overflow-x: hidden;
+    background-color: #677dd6;
 }
 
 main {

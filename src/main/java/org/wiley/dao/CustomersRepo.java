@@ -2,7 +2,7 @@ package org.wiley.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.wiley.entity.Order;
+import org.wiley.entity.Customer;
 
 /* *
  * Abdullah Tariq, Riyad Argoub, Giovanni De Franceschi
@@ -10,5 +10,5 @@ import org.wiley.entity.Order;
  * */
 
 @Repository
-public interface CustomersRepo extends JpaRepository<Order, Integer> {
+public interface CustomersRepo extends JpaRepository<Customer, Integer> {
 }

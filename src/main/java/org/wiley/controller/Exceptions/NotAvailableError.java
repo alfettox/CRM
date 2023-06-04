@@ -1,4 +1,4 @@
-package org.wiley.controller;
+package org.wiley.controller.Exceptions;
 
 import org.wiley.entity.Product;
 
