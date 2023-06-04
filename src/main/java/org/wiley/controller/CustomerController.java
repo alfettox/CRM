@@ -30,6 +30,9 @@ public class CustomerController {
     @GetMapping("/")                                                                  //WORKS
     public ResponseEntity<List<Customer>> getAllCustomers() {
         List<Customer> customers = customersRepo.findAll();
+        for(Customer c : customers){
+            System.out.println(c.getEmail());
+        }
         return ResponseEntity.status(HttpStatus.OK).body(customers);
     }
 
