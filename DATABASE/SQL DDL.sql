@@ -26,6 +26,7 @@ CREATE TABLE orders (
 CREATE TABLE product (
   productId INT PRIMARY KEY,
   productCatId INT,
+  productName VARCHAR (45),
   FOREIGN KEY (productCatId) REFERENCES productCategory(catId)
 );
 

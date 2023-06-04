@@ -7,7 +7,8 @@ package org.wiley.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.wiley.entity.Product;
 
 @Repository
-public interface Repo extends JpaRepository<Object, Integer> {
+public interface ProductsRepo extends JpaRepository<Product, Integer> {
 }

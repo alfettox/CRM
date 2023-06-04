@@ -16,10 +16,10 @@ VALUES
 -- Insert data into the product table
 INSERT INTO product (productId, productCatId)
 VALUES
-  (1, 1),
-  (2, 2),
-  (3, 1),
-  (4, 2);
+  (1, 1, "prod1"),
+  (2, 2, "prod2"),
+  (3, 1, "prod3"),
+  (4, 2, "prod4");
 
 -- Insert data into the productCategory table
 INSERT INTO productCategory (catId, productCat)
