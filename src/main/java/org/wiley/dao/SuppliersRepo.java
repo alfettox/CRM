@@ -2,7 +2,6 @@ package org.wiley.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.wiley.entity.Order;
 import org.wiley.entity.Supplier;
 
 /* *

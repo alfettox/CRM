@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.wiley.dao.CustomersRepo;
 import org.wiley.dao.OrdersRepo;
-import org.wiley.entity.Customer;
 import org.wiley.entity.Order;
 
 import java.util.List;
@@ -28,9 +26,12 @@ public class OrderController {
         this.ordersRepo = ordersRepo;
     }
 
-    @GetMapping("/")
+    @GetMapping("/")                                                //WORKS
     public ResponseEntity<List<Order>> getAllOrders() {
         List<Order> orders = ordersRepo.findAll();
+        for(Order o : orders){
+            System.out.println(o.getCustomer() + ",  " + o.getQuantity());
+        }
         return ResponseEntity.status(HttpStatus.OK).body(orders);
     }
 

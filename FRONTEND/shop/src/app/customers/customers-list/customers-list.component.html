@@ -2,24 +2,36 @@
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
-/><filter-textbox (changed)="filter($event)"></filter-textbox>
+/>
+
+<div id="table-container">
+<filter-textbox (changed)="filter($event)"></filter-textbox>
 <br />
 <br />
+
 <table class="table table-hover">
   <thead>
-    <tr>
-      <th (click)="sort('name')">Name</th>
-      <th (click)="sort('city')">City</th>
-      <th (click)="sort('orderTotal')">Order Total</th>
+    <tr >
+      <th (click)="sort('id')">ID 
+        <img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
+      <th (click)="sort('fName')">First Name<img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
+      <th (click)="sort('lName')">Last Name<img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
+      <th (click)="sort('phoneNum')">Phone Number<img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
+      <th (click)="sort('shippingAddress')">Shipping Address<img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
+      <th (click)="sort('email')">E-mail<img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
+      <th (click)="sort('orderTotal')">Order Total<img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
     </tr>
   </thead>
-  <tr *ngFor="let cust of filteredCustomers">
+  <tr class="table-row" *ngFor="let cust of filteredCustomers">
     <td>
-      <!-- <a [routerLink]="['/orders', cust.id]"> -->
-      <!-- {{ cust.name | capitalize }} -->
-      <!-- </a> -->
+      <a [routerLink]="['/orders', cust.id]">
+       {{ cust.id }} </a>
     </td>
-    <td>{{ cust.city }}</td>
+    <td>{{ cust.fName }}</td>
+    <td>{{ cust.lName }}</td>
+    <td>{{ cust.phoneNum }}</td>
+    <td>{{ cust.shippingAddress }}</td>
+    <td>{{ cust.email }}</td>
     <td>{{ cust.orderTotal | currency : currencyCode : "symbol" }}</td>
   </tr>
   <tr *ngIf="filteredCustomers && filteredCustomers.length">
@@ -32,4 +44,6 @@
     <td colspan="4">No customers found</td>
   </tr>
 </table>
+
 Number of Customers: {{ filteredCustomers.length }} <br />
+</div>

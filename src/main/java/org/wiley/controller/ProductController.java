@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.wiley.dao.ProductsRepo;
-import org.wiley.entity.Order;
 import org.wiley.entity.Product;
 
 import java.util.List;
@@ -27,9 +26,12 @@ public class ProductController {
         this.productsRepo = productsRepo;
     }
 
-    @GetMapping("/")
+    @GetMapping("/")                                                    //WORKS
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productsRepo.findAll();
+        for(Product p : products){
+            System.out.println(p.getProductName() + ", " + p.getProductPrice()+p.getProductId());
+        }
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
 

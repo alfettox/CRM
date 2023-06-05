@@ -6,44 +6,72 @@ package org.wiley.entity;
  * */
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "product")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "productId", nullable = false)
-    private Integer id;
+    @Column(name = "productId")
+    private int productId;
 
-    @Column(name = "productCatId" )
-    private Integer productCatId;
+    @ManyToOne
+    @JoinColumn(name = "productCatId", referencedColumnName = "catId")
+    private ProductCategory productCategory;
 
-    @Column(name = "productName")
+    @Column(name = "productName", length = 45)
     private String productName;
 
+    @Column(name = "productPrice", precision = 10, scale = 2)
+    private BigDecimal productPrice;
 
-    public Integer getId() {
-        return id;
+    @ManyToMany(mappedBy = "ordersList")
+    private List<Order> orders;
+
+    @ManyToMany(mappedBy = "productsSuppliers")
+    private List<Supplier> ordersSuppliers;
+
+    public int getProductId() {
+        return productId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
     }
 
     public String getProductName() {
-        return this.productName;
-    }
-
-    public Integer getProductCatId() {
-        return productCatId;
-    }
-
-    public void setProductCatId(Integer productCatId) {
-        this.productCatId = productCatId;
+        return productName;
     }
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public BigDecimal getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
@@ -53,17 +81,22 @@ public class Product {
 
         Product product = (Product) o;
 
-        if (!Objects.equals(id, product.id)) return false;
-        if (!Objects.equals(productCatId, product.productCatId))
+        if (productId != product.productId) return false;
+        if (!Objects.equals(productCategory, product.productCategory))
             return false;
-        return Objects.equals(productName, product.productName);
+        if (!Objects.equals(productName, product.productName)) return false;
+        if (!Objects.equals(productPrice, product.productPrice))
+            return false;
+        return Objects.equals(orders, product.orders);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (productCatId != null ? productCatId.hashCode() : 0);
+        int result = productId;
+        result = 31 * result + (productCategory != null ? productCategory.hashCode() : 0);
         result = 31 * result + (productName != null ? productName.hashCode() : 0);
+        result = 31 * result + (productPrice != null ? productPrice.hashCode() : 0);
+        result = 31 * result + (orders != null ? orders.hashCode() : 0);
         return result;
     }
 }

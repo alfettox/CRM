@@ -6,3 +6,48 @@ html, body {
     height: 100%;
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.icon-small{
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+}
+
+table{
+    max-width: 90%;
+}
+
+th{
+    padding: 0.5rem 1rem;
+}
+
+#table-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+thead{
+    background-color: rgb(224, 224, 224);
+    color:black;
+}
+
+
+table{
+    background-color: white;
+}
+
+td{
+    min-width: 100px;
+}
+
+.table-row{
+    border: rgb(0, 0, 0) !important;
+}
+
+.table-row:hover{
+    background-color: rgb(209, 118, 7);
+}
