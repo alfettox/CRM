@@ -73,4 +73,8 @@ public class Order {
         result = 31 * result + (ordersList != null ? ordersList.hashCode() : 0);
         return result;
     }
+
+    public int getCustomerId() {
+        return this.customer.getCustomerId();
+    }
 }

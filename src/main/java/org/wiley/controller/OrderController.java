@@ -35,9 +35,10 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(orders);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Order> getOrder(@PathVariable("id") int id) {
-        Order order = ordersRepo.findById(id).orElse(null);
+    @GetMapping("/{orderId}")
+    public ResponseEntity<Order> getOrder(@PathVariable("orderId") int orderId) {
+        Order order = ordersRepo.findById(orderId).orElse(null);
+        System.out.println(order.getCustomer() + ",  " + order.getQuantity());
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 

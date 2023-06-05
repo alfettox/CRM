@@ -12,8 +12,7 @@
 <table class="table table-hover">
   <thead>
     <tr >
-      <th (click)="sort('id')">ID 
-        <img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
+      <th (click)="sort('id')">ID <img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
       <th (click)="sort('fName')">First Name<img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
       <th (click)="sort('lName')">Last Name<img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
       <th (click)="sort('phoneNum')">Phone Number<img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically"></th>
@@ -24,8 +23,8 @@
   </thead>
   <tr class="table-row" *ngFor="let cust of filteredCustomers">
     <td>
-      <a [routerLink]="['/orders', cust.id]">
-       {{ cust.id }} </a>
+      <a [routerLink]="['/orders', cust.customerId]">
+       {{ cust.customerId }} </a>
     </td>
     <td>{{ cust.fName }}</td>
     <td>{{ cust.lName }}</td>

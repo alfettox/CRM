@@ -89,10 +89,10 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
     this.title = 'Orders';
-    let id = this.route.snapshot.paramMap.get('id');    //GET ID FROM URL, INSTEAD OF SUBSCRIBING THIS USED SNAPSHOT
+    let id = this.route.snapshot.paramMap.get('customerId');    //GET ID FROM URL, INSTEAD OF SUBSCRIBING THIS USED SNAPSHOT
     if (id !== null) {
       let customerId = parseInt(id, 10);
-      this.dataService.getOrders(customerId).subscribe((orders: IOrder[]) => {
+      this.dataService.getOrderById(customerId).subscribe((orders: IOrder[]) => {
         this.orders = orders;
       });
 

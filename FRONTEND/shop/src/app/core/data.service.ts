@@ -11,7 +11,7 @@ import { ICustomer, IOrder, IProduct } from '../shared/Interfaces';
 export class DataService {
 
     // baseUrl: string = 'assets/';
-    baseUrl: string = 'http://localhost:8080/';//http://localhost:8080/customers
+    baseUrl: string = 'http://localhost:8080/'; //http://localhost:8080/customers
 
     constructor(private http: HttpClient) { }
 
@@ -35,7 +35,7 @@ export class DataService {
     
     
 
-    getOrders(id: number): Observable<IOrder[]> {
+    getOrderById(id: number): Observable<IOrder[]> {
       return this.http.get<IOrder[]>(this.baseUrl +'orders/')
         .pipe(
           map((orders: any[]) => {
@@ -52,6 +52,18 @@ export class DataService {
           tap(data => console.log(data)), 
           catchError(this.handleError)
         );
+    }
+
+    getOrdersByCustomerId(customerId: number): void {
+      const url = `${this.baseUrl}orders?customerId=${customerId}`;
+      this.http.get<IOrder[]>(url)   //change to an interface
+      .pipe(
+        map((orders: any[]) => {
+          let custOrderById = orders.filter((order: IOrder) => order.customerId === customerId);
+          return custOrderById;
+        }),
+        catchError(this.handleError)
+      );
     }
 
 
