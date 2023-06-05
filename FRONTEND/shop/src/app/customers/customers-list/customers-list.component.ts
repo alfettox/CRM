@@ -23,7 +23,7 @@ export class CustomersListComponent implements OnInit {
 
   filteredCustomers: any[] = [];
   customersOrderTotal: number = 0;
-  currencyCode: string = 'USD';
+  currencyCode: string = 'CAD';
 
   constructor(private sorterService: SorterService) {}
 
@@ -41,7 +41,7 @@ export class CustomersListComponent implements OnInit {
     if (data) {
       this.filteredCustomers = this.customers.filter((cust: ICustomer) => {
         return (
-          cust.name.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
+          cust.fName.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
           (cust.orderTotal !== undefined && cust.orderTotal !== null && cust.orderTotal.toString().indexOf(data) > -1)
         );
       });

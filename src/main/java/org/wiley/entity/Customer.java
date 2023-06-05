@@ -1,39 +1,46 @@
 package org.wiley.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /* *
  * Abdullah Tariq, Riyad Argoub, Giovanni De Franceschi
  * Wiley Edge 2023
  * */
-@Entity
-public class Customer{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customerId", nullable = false)
-    private Integer id;
 
-    @Column (name="fName")
+@Entity
+@Table(name = "customer")
+public class Customer {
+    @Id
+    @Column(name = "customerId")
+    private int customerId;
+
+    @Column(name = "fName", length = 50)
     private String fName;
 
-    @Column (name="lName")
+    @Column(name = "lName", length = 50)
     private String lName;
 
-    @Column (name="phoneNum")
+    @Column(name = "phoneNum", length = 10)
     private String phoneNum;
 
-    @Column (name="shippingAddress")
+    @Column(name = "shippingAddress", length = 100)
     private String shippingAddress;
 
-    @Column (name="email")
+    @Column(name = "email", length = 30)
     private String email;
 
-    public Integer getId() {
-        return id;
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders = new ArrayList<>();
+
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getfName() {
@@ -83,20 +90,18 @@ public class Customer{
 
         Customer customer = (Customer) o;
 
-        if (id != null ? !id.equals(customer.id) : customer.id != null) return false;
-        if (fName != null ? !fName.equals(customer.fName) : customer.fName != null) return false;
-        if (lName != null ? !lName.equals(customer.lName) : customer.lName != null) return false;
-        if (phoneNum != null ? !phoneNum.equals(customer.phoneNum) : customer.phoneNum != null) return false;
-        if (shippingAddress != null ? !shippingAddress.equals(customer.shippingAddress) : customer.shippingAddress != null)
+        if (customerId != customer.customerId) return false;
+        if (!Objects.equals(fName, customer.fName)) return false;
+        if (!Objects.equals(lName, customer.lName)) return false;
+        if (!Objects.equals(phoneNum, customer.phoneNum)) return false;
+        if (!Objects.equals(shippingAddress, customer.shippingAddress))
             return false;
-        if (email != null ? !email.equals(customer.email) : customer.email != null) return false;
-
-        return true;
+        return Objects.equals(email, customer.email);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = customerId;
         result = 31 * result + (fName != null ? fName.hashCode() : 0);
         result = 31 * result + (lName != null ? lName.hashCode() : 0);
         result = 31 * result + (phoneNum != null ? phoneNum.hashCode() : 0);

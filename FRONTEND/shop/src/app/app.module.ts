@@ -7,7 +7,6 @@ import { PaymentComponent } from './payment/payment.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { CustomersModule } from './customers/customers.module';

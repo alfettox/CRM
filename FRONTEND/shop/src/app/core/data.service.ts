@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { tap } from 'rxjs/operators';
-import { ICustomer, IOrder } from '../shared/Interfaces';
+import { ICustomer, IOrder, IProduct } from '../shared/Interfaces';
 
 @Injectable()
 export class DataService {
@@ -28,7 +28,7 @@ export class DataService {
     getCustomers(): Observable<ICustomer[]> {
       return this.http.get<ICustomer[]>(this.baseUrl + 'customers/')
         .pipe(
-          tap(data => console.log(data)), // Log the data
+          tap(data => console.log(data)),
           catchError(this.handleError)
         );
     }
@@ -36,7 +36,7 @@ export class DataService {
     
 
     getOrders(id: number): Observable<IOrder[]> {
-      return this.http.get<IOrder[]>(this.baseUrl + 'orders.json')
+      return this.http.get<IOrder[]>(this.baseUrl +'orders/')
         .pipe(
           map((orders: any[]) => {
             let custOrders = orders.filter((order: IOrder) => order.customerId === id);
@@ -45,6 +45,15 @@ export class DataService {
           catchError(this.handleError)
         );
     }
+
+    getProducts(): Observable<IProduct[]> {
+      return this.http.get<IProduct[]>(this.baseUrl + 'products/')
+        .pipe(
+          tap(data => console.log(data)), 
+          catchError(this.handleError)
+        );
+    }
+
 
     private handleError(error: any): Observable<any> {
       console.error('server error:', error);

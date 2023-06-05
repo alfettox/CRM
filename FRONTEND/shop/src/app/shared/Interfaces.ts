@@ -1,16 +1,22 @@
 export interface ICustomer {
     id: number;
-    name: string;
+    fName: string;
+    lName: string;
+    phoneNum: string;
+    shippingAddress: string;
+    email: string;
     orderTotal?: number | null;
 }
 
 export interface IOrder {
     customerId: number;
-    orderItems: IOrderItem[];
+    orderItems: IProduct[];
 }
 
-export interface IOrderItem {
+export interface IProduct {
     id: number;
-    productName: string;
-    itemCost: number;
+    quantity: string;
+    productId: number;
+    customerId: number;
+    
 }

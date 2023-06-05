@@ -18,6 +18,7 @@ export class CustomersComponent implements OnInit {
         this.dataService.getCustomers()
             .subscribe((customers: ICustomer[]) => this.people = customers);
 
+// MOCK TEMPORARY DATA
 
         // this.title = 'Customers';
         // this.dataService.getCustomers()
@@ -28,5 +29,7 @@ export class CustomersComponent implements OnInit {
         //     { id: 3, name: 'Michelle Thomas', city: 'Seattle', orderTotal: 99.99, customerSince: new Date(2002, 10, 31)},
         //     { id: 4, name: 'Jim Thomas', city: 'New York', orderTotal: 599.99, customerSince: new Date(2002, 10, 31)},
         // ];
+
+        
     }
 }

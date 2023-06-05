@@ -22,7 +22,6 @@ public class CustomerController {
     @Autowired
     private CustomersRepo customersRepo;
 
-
     public CustomerController(CustomersRepo customersRepo) {
         this.customersRepo = customersRepo;
     }
@@ -30,9 +29,9 @@ public class CustomerController {
     @GetMapping("/")                                                                  //WORKS
     public ResponseEntity<List<Customer>> getAllCustomers() {
         List<Customer> customers = customersRepo.findAll();
-        for(Customer c : customers){
-            System.out.println(c.getEmail());
-        }
+//        for(Customer c : customers){
+//            System.out.println(c.getEmail());
+//        }
         return ResponseEntity.status(HttpStatus.OK).body(customers);
     }
 
