@@ -36,5 +36,9 @@ public class SupplierController {
         List<Supplier> suppliers = suppliersRepo.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(suppliers);
     }
+
+
+
+
 }
 

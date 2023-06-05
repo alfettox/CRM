@@ -1,25 +1,21 @@
-
 <h1>{{ title }}</h1>
 <br />
 
- <div *ngIf="customer">
-    <h1> ORDERS</h1>
-    <h1>Orders for {{ customer.fName }} {{ customer.lName}}</h1>
+<div *ngIf="customer">
+  <h1>ORDERS</h1>
+  <h1>Orders for {{ customer.fName }} {{ customer.lName }}</h1>
+  <table class="table table-hover orders-table" *ngFor="let order of orders">
+    <tr *ngFor="let orderItem of order.orderItems">
+      <td>Order id: {{ orderItem.id }}</td>
+      <td>Items quantity{{ orderItem.quantity }}</td>
+      <td>Product id {{ orderItem.productId }}</td>
+      <td>Customer id {{ orderItem.customerId }}</td>
+    </tr>
+  </table>
+</div>
 
-    <table class="table table-hover orders-table" *ngFor="let order of orders">
-      <tr *ngFor="let orderItem of order.orderItems">
-        <td>Order id: {{ orderItem.id }}</td>
-        <td>Items quantity{{ orderItem.quantity }}</td>
-        <td>Product id {{ orderItem.productId }}</td>
-        <td>Customer id {{ orderItem.customerId }}</td>
-      </tr>
-    </table>
-  </div>
+<div *ngIf="!customer" class="has-error">No customer found</div>
 
-  <div *ngIf="!customer">
-    No customer found
-  </div>
-
-  <br />
-  <a routerLink="/orders">View All Orders</a>
-  <a routerLink="/customers">View All Customers</a>
+<br />
+<a routerLink="/orders">View All Orders</a>
+<a routerLink="/customers">View All Customers</a>

@@ -1,6 +1,7 @@
-<!-- <app-nav></app-nav> -->
-<div class="product-container">
-    <div class="product-card" *ngFor="let product of products | slice:(currentPage-1)*itemsPerPage:currentPage*itemsPerPage">
+<!--  PRODUCT CATALOG -->
+
+<div *ngFor="let product of products" class="product-container">
+    <div class="product-card" >
       <img [src]="product.image" alt="Product Image">
       <h3>{{ product.name }}</h3>
       <p>Price: {{ product.price }}</p>
@@ -13,10 +14,3 @@
       <button (click)="resetQuantity(product)">Reset</button>
     </div>
   </div>
-<!--   
-  <app-cart></app-cart> -->
-  <div class="pagination">
-    <button [disabled]="currentPage === 1" (click)="prevPage()">Previous</button>
-    <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
-  </div>
-  

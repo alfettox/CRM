@@ -28,7 +28,6 @@ public class ProductCategory {
     @OneToMany(mappedBy = "productCategory")
     private List<Product> products = new ArrayList<>();
 
-
     public int getCatId() {
         return catId;
     }

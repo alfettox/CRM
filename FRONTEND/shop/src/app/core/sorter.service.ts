@@ -14,7 +14,7 @@ export class SorterService {
             let aVal: any;
             let bVal: any;
             
-            //Handle resolving complex properties such as 'state.name' for prop value
+
             if (prop && prop.indexOf('.') > -1) {
               aVal = this.resolveProperty(prop, a);
               bVal = this.resolveProperty(prop, b);
@@ -24,7 +24,6 @@ export class SorterService {
               bVal = b[prop];
             }
             
-            //Fix issues that spaces before/after string value can cause such as ' San Francisco'
             if (this.isString(aVal)) aVal = aVal.trim().toUpperCase();
             if (this.isString(bVal)) bVal = bVal.trim().toUpperCase();
           

@@ -1,0 +1,10 @@
+.product-container{
+    background-color: white;
+    margin:1em;
+    border: 1px solid black;
+    padding:1em;
+}
+
+button{
+    margin:.3em;
+}
