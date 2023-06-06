@@ -84,15 +84,12 @@ public class ProductController {
 
             List<Product> ordersList = entityManager.createQuery(ordersQuery, Product.class)
                     .getResultList();
-
-            // iterate over products and create a new List of filteredProducts
             List<Product> filteredProducts = new ArrayList<>();
             for (Product p : productList) {
                 if (orderProductMap.containsKey(p.getProductId())) {
                     filteredProducts.add(p);
                 }
             }
-
             return new ResponseEntity<>(filteredProducts, HttpStatus.OK);
         } catch (NoResultException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
