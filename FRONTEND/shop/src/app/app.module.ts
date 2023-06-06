@@ -29,7 +29,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    CustomersModule,
     OrdersModule,
     SharedModule,
     CoreModule,

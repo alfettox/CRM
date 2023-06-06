@@ -9,7 +9,7 @@ import { ICustomer } from '../../shared/Interfaces';
 })
 export class CreateCustomerComponent {
   customer: ICustomer = {
-    id: 0,
+    customerId: 0,
     fName: '',
     lName: '',
     phoneNum: '',

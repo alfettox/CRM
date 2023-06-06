@@ -10,7 +10,7 @@ import { ICustomer } from '../../shared/Interfaces';
 
 export class ModifyCustomerComponent {
   customer: ICustomer = {
-    id: 0,
+    customerId: 0,
     fName: '',
     lName: '',
     phoneNum: '',
@@ -21,7 +21,7 @@ export class ModifyCustomerComponent {
   constructor(private http: HttpClient) {}
 
   modifyCustomer() {
-    this.http.put('http://localhost:8080/customers/' + this.customer.id, this.customer)      .subscribe(
+    this.http.put('http://localhost:8080/customers/' + this.customer.customerId, this.customer)      .subscribe(
         () => {
           console.log('Customer modified successfully');
         },

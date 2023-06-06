@@ -5,8 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.wiley.dao.ProductsRepo;
+import org.wiley.entity.Order;
 import org.wiley.entity.Product;
 
+import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
 
 /* *
@@ -18,6 +21,9 @@ import java.util.List;
 @RequestMapping("/products")
 @CrossOrigin
 public class ProductController {
+
+    @Autowired
+    private EntityManager entityManager;
 
     @Autowired
     private ProductsRepo productsRepo;
@@ -40,6 +46,26 @@ public class ProductController {
         Product product = productsRepo.findById(id).orElse(null);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
+
+
+    //TODO TO BE COMPLETED AND TESTED OR MOVE THE COST IN ORDER
+//    @GetMapping("/orderid/{orderId}")
+//    public ResponseEntity<List<Product>> getProductsByOrder(@PathVariable("orderId") Long orderId) {
+//        String query =
+//                "SELECT NEW org.wiley.entity.Product(p.productId, p.productCatId, p.productName, p.productPrice) " +
+//                        "FROM Product p " +
+//                        "JOIN orderproduct op " +
+//                        "JOIN op.order o " +
+//                        "WHERE o.orderId = :orderId";
+//
+//        List<Product> filteredProducts = entityManager.createQuery(query, Product.class)
+//                .setParameter("orderId", orderId)
+//                .getResultList();
+//
+//        return ResponseEntity.ok(filteredProducts);
+//    }
+
+
 
     @PostMapping("/add")
     public ResponseEntity<Void> addNewProduct(@RequestBody Product product) {

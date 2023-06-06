@@ -1,4 +1,4 @@
-import { ISupplier } from './../shared/Interfaces';
+import { ICustomer, ISupplier } from './../shared/Interfaces';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../core/data.service'; // Import the DataService
@@ -21,19 +21,15 @@ export class LoginPageComponent {
   async login() {
     if (this.isEmailValidSyntax()) {
       try {
-        const suppliersList = await this.dataService.fetchSuppliers();
-  
-        suppliersList.forEach((supplier: ISupplier[]) => {
-          for (let i = 0; i < supplier.length; i++) {
-            supplier[i].supEmail = supplier[i].supEmail.toLowerCase();
-            if (supplier[i].supEmail === this.email.toLowerCase()) {
-              this.router.navigate(['/customers'], {
-                queryParams: { supplierId: supplier[i].supplierId },
-              });
-              break;
-            }
-          }
-        });
+        var customersList = await this.dataService.fetchCustomersBySupplier(this.email).toPromise();
+        if (customersList && customersList.length > 0) {
+          const customerIds = customersList.map(customer => customer.customerId);
+          this.router.navigate(['/customers'], {
+            queryParams: { customerId: customerIds.join(',') },
+          });
+        } else {
+          console.log('Customer list is empty');
+        }
       } catch (error) {
         console.log('ERROR FETCHING:', error);
       }

@@ -48,19 +48,9 @@ export class DataService {
     );
   }
 
-  getOrdersByCustomerId(customerId: number): void {
-    const url = `${this.baseUrl}orders?customerId=${customerId}`;
-    this.http
-      .get<IOrder[]>(url)
-      .pipe(
-        map((orders: any[]) => {
-          let custOrderById = orders.filter(
-            (order: IOrder) => order.customerId === customerId
-          );
-          return custOrderById;
-        }),
-        catchError(this.handleError)
-      );
+  getOrdersByCustomerId(customerId: number): Observable<IOrder[]> {
+    const url = `${this.baseUrl}/orders/cost/${customerId}`;
+    return this.http.get<IOrder[]>(url);
   }
 
   private handleError(error: any): Observable<any> {
@@ -68,10 +58,14 @@ export class DataService {
     return throwError(error || 'Node.js server error');
   }
 
-  fetchSuppliers(): Observable<ISupplier[]> {
-    return this.http.get<ISupplier[]>(this.baseUrl + 'suppliers').pipe(
-      tap((data) => console.log(data)),
+  fetchCustomersBySupplier(email: string): Observable<ICustomer[]> {
+    console.log(email);
+    console.log(`${this.baseUrl}customers/supplier/${email}`);
+    return this.http.get<ICustomer[]>(`${this.baseUrl}customers/supplier/${email}`).pipe(
       catchError(this.handleError)
     );
   }
+
+  
+  
 }
