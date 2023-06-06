@@ -7,17 +7,9 @@ import { OrdersComponent } from './orders.component';
 import { OrdersRoutingModule } from './orders-routing.module';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        CommonModule,
-        FormsModule,
-        OrdersRoutingModule,
-    ],
-    declarations: [
-        OrdersComponent,
-
-    ]
+  imports: [SharedModule, CommonModule, FormsModule, OrdersRoutingModule],
+  declarations: [OrdersComponent],
 })
 export class OrdersModule {
-
+    title = 'Order'
 }

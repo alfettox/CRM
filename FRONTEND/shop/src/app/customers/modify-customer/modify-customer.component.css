@@ -1,0 +1,18 @@
+.customer-form {
+  display: table;
+  margin: 0 auto;
+}
+
+label {
+  display: table-cell;
+  padding-right: 10px;
+  text-align: right;
+}
+
+input {
+  display: table-cell;
+}
+
+button {
+  margin: 1em 0;
+}

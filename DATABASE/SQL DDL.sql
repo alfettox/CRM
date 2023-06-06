@@ -4,41 +4,39 @@
 DROP DATABASE IF EXISTS shoppingcart;
 CREATE DATABASE shoppingcart;
 USE shoppingcart;
-
 CREATE TABLE productCategory (
-  catId INT PRIMARY KEY,
+  catId INT AUTO_INCREMENT PRIMARY KEY,
   productCat VARCHAR(40),
   catImage BLOB
 );
 
 CREATE TABLE supplier (
-  supplierId INT PRIMARY KEY,
+  supplierId INT AUTO_INCREMENT PRIMARY KEY,
   supPhoneNum INT,
   supEmail VARCHAR(40)
 );
 
 CREATE TABLE customer (
-  customerId INT,
+  customerId INT AUTO_INCREMENT,
   fName VARCHAR(50),
   lName VARCHAR(50),
   phoneNum VARCHAR(10),
   shippingAddress VARCHAR(100),
-  email VARCHAR(30),
+  email VARCHAR(40),
   PRIMARY KEY (customerId)
 );
 
 CREATE TABLE product (
-  productId INT PRIMARY KEY,
+  productId INT AUTO_INCREMENT PRIMARY KEY,
   productCatId INT,
-  productName VARCHAR (45),
+  productName VARCHAR (50),
   productPrice DECIMAL (10,2),
   FOREIGN KEY (productCatId) REFERENCES productCategory(catId)
 );
 
 CREATE TABLE orders (
-  orderId INT PRIMARY KEY,
+  orderId INT AUTO_INCREMENT PRIMARY KEY,
   quantity INT,
-  productId INT,
   customerId INT,
   FOREIGN KEY (productId) REFERENCES product(productId),
   FOREIGN KEY (customerId) REFERENCES customer(customerId)

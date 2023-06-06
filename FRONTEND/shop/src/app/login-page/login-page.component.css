@@ -1,0 +1,49 @@
+h1{
+  font-size: 2em;
+
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.error-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  border: none !important;
+}
+
+#emailLabel {
+  margin: 1em;
+}

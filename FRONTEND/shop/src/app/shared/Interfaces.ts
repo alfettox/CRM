@@ -1,5 +1,7 @@
+// This interfaces defines the objects properties and types of the project.
+
 export interface ICustomer {
-    id: number;
+    customerId: number;
     fName: string;
     lName: string;
     phoneNum: string;
@@ -9,8 +11,10 @@ export interface ICustomer {
 }
 
 export interface IOrder {
+    orderId : number;
+    quantity: number;
+    productId: number;
     customerId: number;
-    orderItems: IProduct[];
 }
 
 export interface IProduct {
@@ -18,5 +22,10 @@ export interface IProduct {
     quantity: string;
     productId: number;
     customerId: number;
-    
+}
+
+export interface ISupplier {
+    supplierId: number;
+    supPhoneNum: string;
+    supEmail: string;
 }

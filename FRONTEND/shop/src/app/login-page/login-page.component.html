@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="form-container">
+    <h1>SHOP MANAGEMENT TOOL</h1>
+    <h3>LOGIN</h3>
+
+    <form (ngSubmit)="login()">
+      <br />
+      <div class="input-field">
+        <label for="email" id="emailLabel">Email:</label>
+        <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="supplier@example.com"/>
+
+        <div class="error-row" *ngIf="!isEmailValidSyntax()">
+          <p class="has-error">Email is invalid!</p>
+        </div>
+
+        <div class="button">
+          <button type="submit">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

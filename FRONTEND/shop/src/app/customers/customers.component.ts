@@ -1,35 +1,56 @@
-import { Component, OnInit } from '@angular/core';
-
+import { ApplicationRef, ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { DataService } from '../core/data.service';
 import { ICustomer } from '../shared/Interfaces';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-    selector: 'app-customers',
-    templateUrl: './customers.component.html'
+  selector: 'app-customers',
+  templateUrl: './customers.component.html',
 })
 export class CustomersComponent implements OnInit {
-    title: string = "customer";
-    people: any[] = [];
-    
-    constructor(private dataService: DataService) {}
-    
-    ngOnInit() {
-        this.title = 'Customers';
-        this.dataService.getCustomers()
-            .subscribe((customers: ICustomer[]) => this.people = customers);
+  customers: ICustomer[] = [];
+  filteredCustomers: ICustomer[] = [];
+  customerIds: number[] = [];
 
-// MOCK TEMPORARY DATA
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute,
+    private changeDetectorRef: ChangeDetectorRef,
+    private ngZone: NgZone
+  ) {}
 
-        // this.title = 'Customers';
-        // this.dataService.getCustomers()
-        //     .subscribe((customers: ICustomer[]) => this.people = customers);
-        // this.people = [
-        //     { id: 1, name: 'john Doe', city: 'Phoenix', orderTotal: 9.99, customerSince: new Date(2014, 7, 10) },
-        //     { id: 2, name: 'Jane Doe', city: 'Chandler', orderTotal: 19.99, customerSince: new Date(2017, 2, 22)},
-        //     { id: 3, name: 'Michelle Thomas', city: 'Seattle', orderTotal: 99.99, customerSince: new Date(2002, 10, 31)},
-        //     { id: 4, name: 'Jim Thomas', city: 'New York', orderTotal: 599.99, customerSince: new Date(2002, 10, 31)},
-        // ];
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      const customerIdParam = params['customerId'];
+      if (customerIdParam) {
+        this.customerIds = customerIdParam.split(',').map((customerId: string) => parseInt(customerId, 10));
+      }
+      this.fetchCustomers();
+    });
+  }
 
-        
+  fetchCustomers(): void {
+    console.log('Fetching customers...');
+    this.dataService.getCustomers().subscribe((customers: ICustomer[]) => {
+      console.log('Received customers:', customers);
+      this.customers = customers;
+      this.applyFilter();
+    });
+  }
+
+  applyFilter(): void {
+    // if(this.customerIds.length == 0) {
+    //   this.filteredCustomers = this.customers;
+    //   return;
+    // } else 
+    if (this.customerIds.length > 0) {
+      this.filteredCustomers = this.customers.filter((customer: ICustomer) => this.customerIds.includes(customer.customerId));
+    } else {
+      this.filteredCustomers = this.customers;
     }
+    console.log('Filtered customers:', this.filteredCustomers);
+    this.ngZone.run(() => {
+      this.changeDetectorRef.detectChanges();
+    });
+  }
 }

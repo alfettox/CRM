@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.wiley.dao.OrdersRepo;
+import org.wiley.entity.Customer;
 import org.wiley.entity.Order;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class OrderController {
     @GetMapping("/")                                                //WORKS
     public ResponseEntity<List<Order>> getAllOrders() {
         List<Order> orders = ordersRepo.findAll();
-        for(Order o : orders){
+        for (Order o : orders) {
             System.out.println(o.getCustomer() + ",  " + o.getQuantity());
         }
         return ResponseEntity.status(HttpStatus.OK).body(orders);
@@ -59,4 +60,17 @@ public class OrderController {
         ordersRepo.save(order);
         return new ResponseEntity<Order>(order, HttpStatus.OK);
     }
+
+    @GetMapping("/cost/{customerId}")
+    public ResponseEntity<List<Order>> getOrdersByCustomerId(@PathVariable Integer customerId) {
+        List<Order> orders = ordersRepo.getOrdersByCustomerId(customerId);
+        if (!orders.isEmpty()) {
+            return ResponseEntity.ok(orders);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
+
+

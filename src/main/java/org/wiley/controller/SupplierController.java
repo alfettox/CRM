@@ -38,7 +38,8 @@ public class SupplierController {
     public ResponseEntity<Supplier> getSupplier(@PathVariable("id") int id) {
         Supplier supplier = suppliersRepo.findById(id).orElse(null);
         return new ResponseEntity<>(supplier, HttpStatus.OK);
-}
+    }
+    
     @PostMapping("/add")
     public ResponseEntity<Void> addNewSupplier(@RequestBody Supplier supplier) {
         suppliersRepo.save(supplier);
@@ -56,6 +57,7 @@ public class SupplierController {
         suppliersRepo.save(supplier);
         return new ResponseEntity<>(supplier, HttpStatus.OK);
     }
+
 }
 
 

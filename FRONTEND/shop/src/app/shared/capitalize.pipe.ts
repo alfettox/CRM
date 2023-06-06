@@ -1,3 +1,5 @@
+// This component is meant to Capitalize the first letter of any string.
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'capitalize' })

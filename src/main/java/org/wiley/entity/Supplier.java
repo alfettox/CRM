@@ -75,6 +75,7 @@ public class Supplier {
         result = 31 * result + (productsSuppliers != null ? productsSuppliers.hashCode() : 0);
         return result;
     }
+
 }
 
 

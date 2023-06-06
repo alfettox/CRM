@@ -1,0 +1,50 @@
+<h2>Modify Customer</h2>
+<form
+  (submit)="modifyCustomer()"
+  class="customer-form"
+  action="http://localhost:8080/customers/{customerId}"
+>
+  <div class="form-row">
+    <label>Customer Id:</label>
+    <input type="text" [(ngModel)]="customer.customerId" name="customerId" required />
+  </div>
+  <div class="form-row">
+    <label>First Name:</label>
+    <input type="text" [(ngModel)]="customer.fName" name="fName" required />
+  </div>
+  <div class="form-row">
+    <label>Last Name:</label>
+    <input type="text" [(ngModel)]="customer.lName" name="lName" required />
+  </div>
+  <div class="form-row">
+    <label>Phone Number:</label>
+    <input
+      type="text"
+      [(ngModel)]="customer.phoneNum"
+      name="phoneNum"
+      required
+    />
+  </div>
+  <div class="form-row">
+    <label>Shipping Address:</label>
+    <input
+      type="text"
+      [(ngModel)]="customer.shippingAddress"
+      name="shippingAddress"
+      required
+    />
+  </div>
+  <div class="form-row">
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="customer.email" name="email" required />
+  </div>
+  <div class="form-row">
+    <label>Order Total:</label>
+    <input type="number" [(ngModel)]="customer.orderTotal" name="orderTotal" />
+  </div>
+  <button type="submit">Modify</button>
+</form>
+
+<a routerLink="/orders">View All Orders</a>
+<br />
+<a routerLink="/customers">View All Customers</a>
