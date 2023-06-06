@@ -41,6 +41,12 @@ export class DataService {
     );
   }
 
+  // http://localhost:8080/products/orderid/158
+  getProductsByOrder(orderId: number): Observable<any> {
+    const url = `${this.baseUrl}products/orderid/${orderId}`;
+    return this.http.get<any>(url);
+  }
+  
   getProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.baseUrl + 'products/').pipe(
       tap((data) => console.log(data)),
@@ -65,7 +71,4 @@ export class DataService {
       catchError(this.handleError)
     );
   }
-
-  
-  
 }

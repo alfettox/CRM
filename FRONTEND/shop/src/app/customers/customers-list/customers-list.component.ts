@@ -1,8 +1,11 @@
 import { DataService } from '../../core/data.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { ICustomer } from '../../shared/Interfaces';
+import { ICustomer, IProduct } from '../../shared/Interfaces';
 import { SorterService } from '../../core/sorter.service';
 import { CustomerDataService } from '../../core/customerDataService'; //TODO NOT WORKING AS EXPECTED
+import { OrderService } from './../../order.service';
+
+
 @Component({
   selector: 'app-customers-list',
   templateUrl: './customers-list.component.html',
@@ -12,16 +15,23 @@ export class CustomersListComponent implements OnInit {
   @Input() filteredCustomers: ICustomer[] = [];
   customersOrderTotal: number = 0;
   currencyCode: string = 'CAD';
+  
 
   constructor(
     private sorterService: SorterService,
     private customerDataService: CustomerDataService,
     private dataService: DataService,
+    private orderService: OrderService
+
 
   ) {}
 
   ngOnInit() {
     this.filter('');
+  }
+
+  calculateTotal(order: any, products: IProduct[]) {
+    return this.orderService.calculateOrderTotal(order, products);
   }
 
   calculateOrders(customer :ICustomer){

@@ -22,6 +22,7 @@ export interface IProduct {
     quantity: string;
     productId: number;
     customerId: number;
+    productPrice: number;
 }
 
 export interface ISupplier {

@@ -2,3 +2,31 @@
     margin-top: 20px;
 }
 
+.table-order{
+    text-align: center;
+}
+
+
+.container
+{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+td{
+    min-width: auto;
+
+}
+
+.google-maps-container{
+    margin:2em;
+    background-color: rgb(63, 63, 63);
+    color:white;
+    padding:2em;
+
+}

@@ -9,8 +9,13 @@ import org.wiley.entity.Order;
 import org.wiley.entity.Product;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /* *
  * Abdullah Tariq, Riyad Argoub, Giovanni De Franceschi
@@ -49,21 +54,50 @@ public class ProductController {
 
 
     //TODO TO BE COMPLETED AND TESTED OR MOVE THE COST IN ORDER
-//    @GetMapping("/orderid/{orderId}")
-//    public ResponseEntity<List<Product>> getProductsByOrder(@PathVariable("orderId") Long orderId) {
-//        String query =
-//                "SELECT NEW org.wiley.entity.Product(p.productId, p.productCatId, p.productName, p.productPrice) " +
-//                        "FROM Product p " +
-//                        "JOIN orderproduct op " +
-//                        "JOIN op.order o " +
-//                        "WHERE o.orderId = :orderId";
-//
-//        List<Product> filteredProducts = entityManager.createQuery(query, Product.class)
-//                .setParameter("orderId", orderId)
-//                .getResultList();
-//
-//        return ResponseEntity.ok(filteredProducts);
-//    }
+
+    @GetMapping("/orderid/{orderId}")
+    public ResponseEntity<List<Product>> getOrderProductsByOrder(@PathVariable("orderId") int orderId) {
+        String sqlQuery = "SELECT p.productId, o.orderId " +
+                "FROM product p " +
+                "INNER JOIN orderproduct op ON p.productId = op.productId " +
+                "INNER JOIN orders o ON op.orderId = o.orderId " +
+                "WHERE o.orderId = :orderId";
+
+        try {
+            List<Object[]> rows = entityManager.createNativeQuery(sqlQuery)
+                    .setParameter("orderId", orderId)
+                    .getResultList();
+
+            Map<Integer, Integer> orderProductMap = new HashMap<>();
+            for (Object[] row : rows) {
+                int pId = (int) row[0];
+                int oId = (int) row[1];
+                orderProductMap.put(pId, oId);
+            }
+
+            String jpql = "SELECT p FROM Product p";
+
+            List<Product> productList = entityManager.createQuery(jpql, Product.class)
+                    .getResultList();
+
+            String ordersQuery = "SELECT p FROM Product p";
+
+            List<Product> ordersList = entityManager.createQuery(ordersQuery, Product.class)
+                    .getResultList();
+
+            // iterate over products and create a new List of filteredProducts
+            List<Product> filteredProducts = new ArrayList<>();
+            for (Product p : productList) {
+                if (orderProductMap.containsKey(p.getProductId())) {
+                    filteredProducts.add(p);
+                }
+            }
+
+            return new ResponseEntity<>(filteredProducts, HttpStatus.OK);
+        } catch (NoResultException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 

@@ -14,6 +14,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './core/data.service';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule
     
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 
