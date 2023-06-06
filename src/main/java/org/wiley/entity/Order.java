@@ -35,6 +35,18 @@ public class Order {
         this.orderId = orderId;
     }
 
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public List<Order> getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(List<Order> ordersList) {
+        this.ordersList = ordersList;
+    }
+
     public int getQuantity() {
         return quantity;
     }

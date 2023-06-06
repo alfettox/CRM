@@ -1,4 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { OrderService } from '../../order.service';
+import { IOrder, IProduct } from 'src/app/shared/Interfaces';
+
 
 @Component({
   selector: 'filter-textbox',
@@ -6,9 +9,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./filter-textbox.component.css'],
 })
 export class FilterTextboxComponent implements OnInit {
+  private orderService!: OrderService;
   private _filter!: string;
   @Input() get filter() {
     return this._filter;
+  }
+
+  calculateTotal(order: IOrder, products: IProduct[]) {
+    return this.orderService.calculateOrderTotal(order, products);
   }
 
   set filter(val: string) {
@@ -20,5 +28,7 @@ export class FilterTextboxComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 }

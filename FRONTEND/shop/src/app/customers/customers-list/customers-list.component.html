@@ -1,6 +1,9 @@
 <div id="table-container">
   <div class="filter-box-container">
-    <filter-textbox id="filter-box-name" (changed)="filter($event)"></filter-textbox>
+    <filter-textbox
+      id="filter-box-name"
+      (changed)="filter($event)"
+    ></filter-textbox>
   </div>
   <br />
   <br />
@@ -10,53 +13,99 @@
       <tr>
         <th (click)="sort('id')">
           ID
-          <img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically" />
+          <img
+            class="icon-small"
+            src="assets/icons/sort.png"
+            alt="Sort alphabetically"
+          />
         </th>
         <th (click)="sort('fName')">
           First Name
-          <img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically" />
+          <img
+            class="icon-small"
+            src="assets/icons/sort.png"
+            alt="Sort alphabetically"
+          />
         </th>
         <th (click)="sort('lName')">
           Last Name
-          <img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically" />
+          <img
+            class="icon-small"
+            src="assets/icons/sort.png"
+            alt="Sort alphabetically"
+          />
         </th>
         <th (click)="sort('phoneNum')">
           Phone Number
-          <img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically" />
+          <img
+            class="icon-small"
+            src="assets/icons/sort.png"
+            alt="Sort alphabetically"
+          />
         </th>
         <th (click)="sort('shippingAddress')">
           Shipping Address
-          <img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically" />
+          <img
+            class="icon-small"
+            src="assets/icons/sort.png"
+            alt="Sort alphabetically"
+          />
         </th>
         <th (click)="sort('email')">
           E-mail
-          <img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically" />
+          <img
+            class="icon-small"
+            src="assets/icons/sort.png"
+            alt="Sort alphabetically"
+          />
         </th>
         <th (click)="sort('orderTotal')">
           Order Total
-          <img class="icon-small" src="assets/icons/sort.png" alt="Sort alphabetically" />
+          <img
+            class="icon-small"
+            src="assets/icons/sort.png"
+            alt="Sort alphabetically"
+          />
         </th>
       </tr>
     </thead>
     <tbody>
       <tr class="table-row" *ngFor="let cust of filteredCustomers">
         <td>
-          <a [routerLink]="['/orders', cust.customerId]">{{ cust.customerId }}</a>
+          
+          <a [routerLink]="['/orders', cust.customerId]">{{
+            cust.customerId
+          }}</a>
         </td>
         <td>{{ cust.fName }}</td>
         <td>{{ cust.lName }}</td>
         <td>{{ cust.phoneNum }}</td>
         <td>{{ cust.shippingAddress }}</td>
         <td>{{ cust.email }}</td>
-        <td>{{ cust.orderTotal | currency: currencyCode: 'symbol' }}</td>
+        <!--TODO <td>{{  calculateTotal(cust.orderId, productId) | currency: currencyCode: 'symbol' }}</td> -->
+        <td>{{ 0 | currency : currencyCode : "symbol" }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Total Amount:</td>
+        <div *ngIf="filteredCustomers && filteredCustomers.length">
+          <p>
+            <strong>
+              {{
+                customersOrderTotal | currency : currencyCode : "symbol"
+              }}</strong
+            >
+          </p>
+        </div>
       </tr>
     </tbody>
   </table>
+  <p>Number of Customers: {{ filteredCustomers.length }}</p>
 
-  <div *ngIf="filteredCustomers && filteredCustomers.length">
-    <p>Number of Customers: {{ filteredCustomers.length }}</p>
-    <p>Total Order Amount: {{ customersOrderTotal | currency: currencyCode: 'symbol' }}</p>
-  </div>
   <div *ngIf="!filteredCustomers || !filteredCustomers.length">
     <p>No customers found</p>
   </div>
