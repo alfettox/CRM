@@ -8,10 +8,7 @@ JOIN product p ON op.productId = p.productId
 JOIN productsupplier ps ON p.productId = ps.productId
 WHERE ps.supplierId = 102;
 
-
--- QUERY TO TEST PRODUCT BY ORDER
-SELECT p.*, o.orderId
-FROM product p
-JOIN orderProduct op ON p.productId = op.productId
-JOIN orders o ON o.orderId = op.orderId
-WHERE op.orderId = o.orderId;
+-- ALTER ADDRESS customer 158
+UPDATE customer
+SET shippingAddress = '123 Main Street, Montreal, QC, H3A 1A1'
+WHERE customerId = 158;
