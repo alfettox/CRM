@@ -31,6 +31,10 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "productId"))
     private List<Order> ordersList = new ArrayList<>();
 
+    public int getOrderId() {
+        return orderId;
+    }
+
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
@@ -77,4 +81,6 @@ public class Order {
     public int getCustomerId() {
         return this.customer.getCustomerId();
     }
+
+
 }
