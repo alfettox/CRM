@@ -6,6 +6,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
   customers: ICustomer[] = [];
@@ -18,6 +19,12 @@ export class CustomersComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private ngZone: NgZone
   ) {}
+
+  reloadPage(): void {
+    const parentUrl = location.href;
+    window.location.reload();
+    window.location.href = parentUrl;
+  }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
@@ -39,10 +46,6 @@ export class CustomersComponent implements OnInit {
   }
 
   applyFilter(): void {
-    // if(this.customerIds.length == 0) {
-    //   this.filteredCustomers = this.customers;
-    //   return;
-    // } else 
     if (this.customerIds.length > 0) {
       this.filteredCustomers = this.customers.filter((customer: ICustomer) => this.customerIds.includes(customer.customerId));
     } else {
@@ -53,8 +56,4 @@ export class CustomersComponent implements OnInit {
       this.changeDetectorRef.detectChanges();
     });
   }
-
-
-
-  
 } 

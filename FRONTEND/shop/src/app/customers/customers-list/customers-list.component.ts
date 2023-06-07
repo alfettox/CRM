@@ -11,6 +11,9 @@ import { OrderService } from './../../order.service';
   templateUrl: './customers-list.component.html',
 })
 export class CustomersListComponent implements OnInit {
+reloadPage() {
+throw new Error('Method not implemented.');
+}
   @Input() customers: ICustomer[] = [];
   @Input() filteredCustomers: ICustomer[] = [];
   customersOrderTotal: number = 0;

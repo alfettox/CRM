@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { CustomersRoutingModule } from './customers/customers-routing.module';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CreateCustomerComponent } from './customers/create-customer/create-customer.component';
 import { ModifyCustomerComponent } from './customers/modify-customer/modify-customer.component';
 import { ItemListComponent } from './item-list/item-list.component';
+import { AboutUsComponent } from './about/about-us/about-us.component';
+import { ContactComponent } from './contact/contact/contact.component';
 
 const routes: Routes = [
   { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule)},    //module
@@ -13,10 +15,26 @@ const routes: Routes = [
   { path: 'create-customer', component: CreateCustomerComponent }, 
   { path: 'modify-customer', component: ModifyCustomerComponent }, 
   { path: '', pathMatch: 'full', component: LoginPageComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'about', component: AboutUsComponent },
+  { path: 'contact', component: ContactComponent }
+
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), CustomersRoutingModule],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  isLoginPage: boolean = false;
+
+  constructor(private router: Router) {}
+
+  onRouterActivate(event: any) {
+    this.isLoginPage = event.constructor.name === 'LoginPageComponent';
+  }
+
+
+}

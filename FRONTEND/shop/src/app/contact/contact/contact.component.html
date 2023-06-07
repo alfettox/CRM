@@ -1,0 +1,45 @@
+<div class="container">
+  <section>
+    <h2>Get in Touch</h2>
+    <p>
+      If you have any questions, feedback, or would like to request a demo of our
+      order management software, please fill out the form below or reach out to us
+      using the contact information provided.
+    </p>
+  </section>
+  <section>
+    <h2>Contact Information</h2>
+    <p><strong>Order Management Solutions</strong></p>
+    <p>1234 Main Street</p>
+    <p>City, State ZIP</p>
+    <p>Email: info@oms.com</p>
+    <p>Phone: (123) 456-7890</p>
+  </section>
+  <section>
+    <h2>Contact Form</h2>
+    <form (ngSubmit)="sendEmail()" #contactForm="ngForm">
+      <div class="form-block">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required [(ngModel)]="name" #nameInput="ngModel" />
+        <div *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)">
+          <div *ngIf="nameInput.errors?.['required']" class="text-danger">Name is required.</div>
+        </div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="email" #emailInput="ngModel" />
+        <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+          <div *ngIf="emailInput.errors?.['required']" class="text-danger">Email is required.</div>
+          <div *ngIf="emailInput.errors?.['email']" class="text-danger">Please enter a valid email address.</div>
+        </div>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required [(ngModel)]="message" #messageInput="ngModel"></textarea>
+        <div *ngIf="messageInput.invalid && (messageInput.dirty || messageInput.touched)">
+          <div *ngIf="messageInput.errors?.['required']" class="text-danger">Message is required.</div>
+        </div>
+
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </section>
+</div>

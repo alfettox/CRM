@@ -1,0 +1,29 @@
+.container{
+  padding:3em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  background-color: white;
+}
+
+
+main h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+main p {
+  margin-bottom: 15px;
+}
+
+footer {
+  background-color: #333;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+}

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OrderService } from '../../order.service';
 import { IOrder, IProduct } from 'src/app/shared/Interfaces';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,9 +26,21 @@ export class FilterTextboxComponent implements OnInit {
     this.changed.emit(this.filter); //Raise changed event
   }
 
+  reloadPage() {
+    const currentUrl = this.router.url;
+    window.location.reload();
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl(currentUrl);
+    });
+  }
+
+  
+  
+  
+  
   @Output() changed: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
 
