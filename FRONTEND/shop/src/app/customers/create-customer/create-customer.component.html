@@ -1,32 +1,143 @@
 <h2>Create Customer</h2>
-<form (submit)="createCustomer()" class="customer-form" action="http://localhost:8080/customers/add">
+<form
+  (submit)="createCustomer()"
+  class="customer-form"
+  action="http://localhost:8080/customers/add"
+  #customerForm="ngForm"   
+>
+  <div class="form-row">
+    <label>Customer ID:</label>
+    <input
+      type="text"
+      [(ngModel)]="customer.customerId"
+      name="customerId"
+      placeholder="Customer ID if available"
+      class="form-control"
+      required
+    />
+  </div>
   <div class="form-row">
     <label>First Name:</label>
-    <input type="text" [(ngModel)]="customer.fName" name="fName" required>
+    <input
+      type="text"
+      [(ngModel)]="customer.fName"
+      name="fName"
+      required
+      class="form-control"
+      #firstName="ngModel"
+    />
+    <div
+      *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="firstName.errors?.['required']">First name is required.</div>
+    </div>
   </div>
   <div class="form-row">
     <label>Last Name:</label>
-    <input type="text" [(ngModel)]="customer.lName" name="lName" required>
+    <input
+      type="text"
+      [(ngModel)]="customer.lName"
+      name="lName"
+      required
+      class="form-control"
+      #lastName="ngModel"
+    />
+    <div
+      *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="lastName.errors?.['required']">Last name is required.</div>
+    </div>
   </div>
   <div class="form-row">
     <label>Phone Number:</label>
-    <input type="text" [(ngModel)]="customer.phoneNum" name="phoneNum" required>
+    <input
+      type="text"
+      [(ngModel)]="customer.phoneNum"
+      name="phoneNum"
+      required
+      pattern="[0-9]{9}"
+      class="form-control"
+      #phoneNum="ngModel"
+    />
+    <div
+      *ngIf="phoneNum.invalid && (phoneNum.dirty || phoneNum.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="phoneNum.errors?.['required']">Phone number is required.</div>
+      <div *ngIf="phoneNum.errors?.['pattern']">
+        Phone number must be 9 digits.
+      </div>
+    </div>
   </div>
   <div class="form-row">
     <label>Shipping Address:</label>
-    <input type="text" [(ngModel)]="customer.shippingAddress" name="shippingAddress" required>
-  </div> 
+    <input
+      type="text"
+      [(ngModel)]="customer.shippingAddress"
+      name="shippingAddress"
+      required
+      class="form-control"
+      #shippingAddress="ngModel"
+    />
+    <div
+      *ngIf="
+        shippingAddress.invalid &&
+        (shippingAddress.dirty || shippingAddress.touched)
+      "
+      class="text-danger"
+    >
+      <div *ngIf="shippingAddress.errors?.['required']">
+        Shipping address is required.
+      </div>
+    </div>
+  </div>
   <div class="form-row">
     <label>Email:</label>
-    <input type="email" [(ngModel)]="customer.email" name="email" required>
+    <input
+      type="email"
+      [(ngModel)]="customer.email"
+      name="email"
+      required
+      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+      class="form-control"
+      #email="ngModel"
+    />
+    <div
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="email.errors?.['required']">Email is required.</div>
+      <div *ngIf="email.errors?.['pattern']">Email is not valid.</div>
+    </div>
   </div>
   <div class="form-row">
     <label>Order Total:</label>
-    <input type="number" [(ngModel)]="customer.orderTotal" name="orderTotal">
+    <input
+      type="number"
+      [(ngModel)]="customer.orderTotal"
+      name="orderTotal"
+      class="form-control"
+    />
   </div>
-  <button type="submit">Create</button>
+  <button
+  type="submit"
+  class="btn btn-primary"
+  [disabled]="
+    customerForm.invalid ||
+    customerForm.pending ||
+    isInvalidControl('fName') ||
+    isInvalidControl('lName') ||
+    isInvalidControl('phoneNum') ||
+    isInvalidControl('shippingAddress') ||
+    isInvalidControl('email')
+  "
+>
+  Create
+</button>
 </form>
 
 <a routerLink="/orders">View All Orders</a>
-<br>
+<br />
 <a routerLink="/customers">View All Customers</a>

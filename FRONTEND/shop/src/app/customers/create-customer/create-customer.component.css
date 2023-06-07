@@ -3,10 +3,6 @@
     margin: 0 auto;
   }
   
-  .form-row {
-    /* display: table-row; */
-  }
-  
   label {
     display: table-cell;
     padding-right: 10px;
@@ -19,5 +15,9 @@
 
   button{
     margin:1em 0;
+  }
+  
+  .text-danger {
+    color: red;
   }
   

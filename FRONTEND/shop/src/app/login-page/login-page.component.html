@@ -1,5 +1,6 @@
 <div class="container">
   <div class="form-container">
+    <img src="../../assets/images/logo.png" alt="logo" class="logo" width="250px"/>
     <h1>SHOP MANAGEMENT TOOL</h1>
     <h3>LOGIN</h3>
 
@@ -9,7 +10,7 @@
         <label for="email" id="emailLabel">Email:</label>
         <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="supplier@example.com"/>
 
-        <div class="error-row" *ngIf="!isEmailValidSyntax()">
+        <div class="error-row" *ngIf="!isEmailValidSyntax() && email !== ''">
           <p class="has-error">Email is invalid!</p>
         </div>
 

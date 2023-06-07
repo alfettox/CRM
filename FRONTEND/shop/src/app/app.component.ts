@@ -1,16 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
-@Component({ 
+@Component({
   selector: 'app-root',
-  template: `
-    <router-outlet></router-outlet>
-  `
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor() { }
+  isLoginPage: boolean = false;
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
-
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isLoginPage = event.url === '/login'; // Update '/login' with the actual route for the login page
+      }
+    });
   }
-  
 }

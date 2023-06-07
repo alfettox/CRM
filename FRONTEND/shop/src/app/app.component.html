@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <!-- Rest of the code for the logo and menu items -->
+  <div class="navbar-collapse collapse show" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" [routerLink]="['/customers']" [class.disabled]="isLoginPage">Customers</a>
+      <a class="nav-item nav-link" [routerLink]="['/orders']" [class.disabled]="isLoginPage">Orders</a>
+      <a class="nav-item nav-link" [routerLink]="['/products']" [class.disabled]="isLoginPage">Products</a>
+      <a class="nav-item nav-link" [routerLink]="['/about']" [class.disabled]="isLoginPage">About</a>
+      <a class="nav-item nav-link" [routerLink]="['/contact']" [class.disabled]="isLoginPage">Contact</a>
+      <a class="nav-item nav-link" [routerLink]="['/']" [class.disabled]="isLoginPage">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

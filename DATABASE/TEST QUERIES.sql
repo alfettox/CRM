@@ -12,3 +12,6 @@ WHERE ps.supplierId = 102;
 UPDATE customer
 SET shippingAddress = '123 Main Street, Montreal, QC, H3A 1A1'
 WHERE customerId = 158;
+
+
+

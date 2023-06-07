@@ -1,3 +1,7 @@
 <h3>Shop management tool</h3>
 <h1>Complete customers List</h1>
+<div class="table-container">
+<button class="filter-reset-btn" (click)="reloadPage()">X</button>
+
 <app-customers-list [customers]="customers" [filteredCustomers]="filteredCustomers"></app-customers-list>
+</div>

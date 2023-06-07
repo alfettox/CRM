@@ -97,3 +97,8 @@ VALUES (100, 100),
        (107, 107),
        (108, 108),
        (109, 109);
+
+-- FUNCTION TO CREATE COLUMN FOR customer TABLE --- IMPORTANT TO IMPLEMENT
+-- Create the totalCost column
+ALTER TABLE customer
+ADD COLUMN totalCost DECIMAL(10, 2);
