@@ -74,6 +74,14 @@ public class Product {
         this.orders = orders;
     }
 
+    public List<Supplier> getOrdersSuppliers() {
+        return ordersSuppliers;
+    }
+
+    public void setOrdersSuppliers(List<Supplier> ordersSuppliers) {
+        this.ordersSuppliers = ordersSuppliers;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -99,4 +107,5 @@ public class Product {
         result = 31 * result + (orders != null ? orders.hashCode() : 0);
         return result;
     }
+
 }

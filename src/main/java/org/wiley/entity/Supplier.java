@@ -54,6 +54,14 @@ public class Supplier {
         this.supEmail = supEmail;
     }
 
+    public List<Product> getProductsSuppliers() {
+        return productsSuppliers;
+    }
+
+    public void setProductsSuppliers(List<Product> productsSuppliers) {
+        this.productsSuppliers = productsSuppliers;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
