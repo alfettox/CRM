@@ -39,10 +39,6 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public int getOrderId() {
-        return orderId;
-    }
-
     public List<Order> getOrdersList() {
         return ordersList;
     }

@@ -98,7 +98,9 @@ VALUES (100, 100),
        (108, 108),
        (109, 109);
 
--- FUNCTION TO CREATE COLUMN FOR customer TABLE --- IMPORTANT TO IMPLEMENT
--- Create the totalCost column
+-- ALTER CUSTOMER TABLE TO STORE A RANDOM SERIES OF COST VALUES
 ALTER TABLE customer
 ADD COLUMN totalCost DECIMAL(10, 2);
+
+UPDATE customer
+SET totalCost = FLOOR(RAND() * (150 - 3 + 1) + 3);
