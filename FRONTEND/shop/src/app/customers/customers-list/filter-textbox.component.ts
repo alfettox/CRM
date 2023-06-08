@@ -3,6 +3,7 @@ import { OrderService } from '../../order.service';
 import { IOrder, IProduct } from 'src/app/shared/Interfaces';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { PhoneNumberFormatPipe } from './../../shared/phone.pipe';
 
 
 @Component({

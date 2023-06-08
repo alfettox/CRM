@@ -1,12 +1,14 @@
+import { AuthService } from './../core/auth.service';
 import { ApplicationRef, ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { DataService } from '../core/data.service';
 import { ICustomer } from '../shared/Interfaces';
 import { ActivatedRoute, Params } from '@angular/router';
-
+import { PhoneNumberFormatPipe } from '../shared/phone.pipe';
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.css']
+  styleUrls: ['./customers.component.css'],
+  providers: [PhoneNumberFormatPipe]
 })
 export class CustomersComponent implements OnInit {
   customers: ICustomer[] = [];
@@ -17,7 +19,8 @@ export class CustomersComponent implements OnInit {
     private dataService: DataService,
     private route: ActivatedRoute,
     private changeDetectorRef: ChangeDetectorRef,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    public authService: AuthService
   ) {}
 
   reloadPage(): void {

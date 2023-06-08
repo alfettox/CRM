@@ -23,7 +23,6 @@ export class CreateCustomerComponent implements OnInit {
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    // Implement ngOnInit logic if needed
   }
 
   createCustomer() {

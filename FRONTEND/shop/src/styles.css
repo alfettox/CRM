@@ -50,6 +50,7 @@ table tr:nth-child(odd) {
 
 th{
     padding: 0.5rem 1rem;
+    background-color: #cccccc;
 }
 
 thead{
@@ -89,7 +90,7 @@ td{
 /* Animated background  */
 .bg {
     width: 100%;
-    height: 100vh;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;

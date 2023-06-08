@@ -60,21 +60,21 @@
             alt="Sort alphabetically"
           />
         </th>
-        <th (click)="sort('orderTotal')">
+        <!-- <th (click)="sort('orderTotal')">
           Order Total
           <img
             class="icon-small"
             src="assets/icons/sort.png"
             alt="Sort alphabetically"
           />
-        </th>
+        </th> -->
       </tr>
     </thead>
     <tbody>
       <tr class="table-row" *ngFor="let cust of filteredCustomers">
         <td>
           
-          <a [routerLink]="['/orders', cust.customerId]">{{
+          <a class[routerLink]="['/orders', cust.customerId]">{{
             cust.customerId
           }}</a>
         </td>
@@ -84,7 +84,7 @@
         <td>{{ cust.shippingAddress }}</td>
         <td>{{ cust.email }}</td>
         <!--TODO <td>{{  calculateTotal(cust.orderId, productId) | currency: currencyCode: 'symbol' }}</td> -->
-        <td>{{ 0 | currency : currencyCode : "symbol" }}</td>
+        <!-- <td>{{ 0 | currency : currencyCode : "symbol" }}</td> -->
       </tr>
       <tr>
         <td></td>
@@ -92,8 +92,8 @@
         <td></td>
         <td></td>
         <td></td>
-        <td>Total Amount:</td>
-        <div *ngIf="filteredCustomers && filteredCustomers.length">
+        <!-- <td>Total Amount:</td> -->
+        <!-- <div *ngIf="filteredCustomers && filteredCustomers.length">
           <p>
             <strong>
               {{
@@ -101,11 +101,11 @@
               }}</strong
             >
           </p>
-        </div>
+        </div> -->
       </tr>
     </tbody>
   </table>
-  <p>Number of Customers: {{ filteredCustomers.length }}</p>
+  <p><b>Number of Customers: {{ filteredCustomers.length }}</b></p>
 
   <div *ngIf="!filteredCustomers || !filteredCustomers.length">
     <p>No customers found</p>

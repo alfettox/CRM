@@ -28,4 +28,26 @@
     border-radius: 5px;
     font-size: 12px;
   }
+
+  .list-of-dummy-customers{
+
+    margin-top:1em;
+    color:grey;
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 10px;
+    padding:1em;
+  
+  }
+  
+  .list-of-dummy-customers h4{
+    font-size:.8em;
+    margin-bottom:0;
+  }
+  
+  .list-of-dummy-customers ul{
+    margin-top:0;
+    font-size:.7em;
+  }
+  
   

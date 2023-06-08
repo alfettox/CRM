@@ -47,3 +47,25 @@ h1{
 #emailLabel {
   margin: 1em;
 }
+
+
+.list-of-dummy-suppliers{
+
+  margin-top:1em;
+  color:grey;
+  border: 1px solid grey;
+  background-color: white;
+  border-radius: 10px;
+  padding:1em;
+
+}
+
+.list-of-dummy-suppliers h4{
+  font-size:.8em;
+  margin-bottom:0;
+}
+
+.list-of-dummy-suppliers ul{
+  margin-top:0;
+  font-size:.7em;
+}

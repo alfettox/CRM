@@ -1,6 +1,6 @@
+import { AuthService } from './../../core/auth.service';
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -11,8 +11,9 @@ export class ContactComponent {
   email!: string;
   message!: string;
 
-  constructor(private toastr: ToastrService) { }
+  constructor(private toastr: ToastrService, public authService : AuthService) { }
 
+  
   sendEmail() {
     // Validate inputs
     if (!this.name || this.name.trim() === '') {
