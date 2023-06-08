@@ -1,8 +1,8 @@
+import { AuthService } from './../core/auth.service';
 import { ICustomer, ISupplier } from './../shared/Interfaces';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../core/data.service'; // Import the DataService
-
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -11,7 +11,7 @@ import { DataService } from '../core/data.service'; // Import the DataService
 export class LoginPageComponent {
   email: string = '';
 
-  constructor(private router: Router, private dataService: DataService) {}
+  constructor(private router: Router, private dataService: DataService, public authservice: AuthService) {}
 
   isEmailValidSyntax(): boolean {
     const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

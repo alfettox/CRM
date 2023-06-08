@@ -17,6 +17,11 @@ import { DataService } from './core/data.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { AboutUsComponent } from './about/about-us/about-us.component';
 import { ContactComponent } from './contact/contact/contact.component';
+import { AuthService } from './core/auth.service';
+import { PhoneNumberFormatPipe } from './shared/phone.pipe';
+import { FilterTextboxComponent } from './customers/customers-list/filter-textbox.component';
+import { IOrder, IProduct } from './shared/Interfaces';
+import { Location } from '@angular/common';
 
 
 @NgModule({
@@ -26,7 +31,7 @@ import { ContactComponent } from './contact/contact/contact.component';
     LoginPageComponent,
     AboutUsComponent,
     ContactComponent,   
-
+    PhoneNumberFormatPipe
   ],
   imports: [
     FormsModule,
@@ -41,7 +46,7 @@ import { ContactComponent } from './contact/contact/contact.component';
     ToastrModule.forRoot()
     
   ],
-  providers: [DataService],
+  providers: [DataService, AuthService],
   bootstrap: [AppComponent]
 })
 

@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../core/auth.service';
 @Component({
   selector: 'app-item-list',
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.css'],
 })
 export class ItemListComponent {
+  constructor(private router: Router, private authService: AuthService) {}
+  isLoginPage: boolean = false;
   nextPage() {
     throw new Error('Method not implemented.');
   }
@@ -44,7 +47,6 @@ export class ItemListComponent {
   itemsPerPage = 6;
 
   products = [
-    //TODO REMOVE AND  GET THE DATA FROM DATABASE
     {
       id: 1,
       name: 'Product 1',

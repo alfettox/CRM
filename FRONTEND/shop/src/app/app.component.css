@@ -81,3 +81,12 @@ a.nav-item.nav-link.disabled {
   text-decoration: none;
   cursor: not-allowed;
 }
+
+.footer{
+  font-style: italic;
+  background-color: white;
+  border-radius: 15px;
+  padding: 0;
+  width: 100%;
+  padding: 0 1em;
+}

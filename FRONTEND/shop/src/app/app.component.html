@@ -1,15 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <!-- Rest of the code for the logo and menu items -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" *ngIf="isLoginPage===true">
   <div class="navbar-collapse collapse show" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" [routerLink]="['/customers']" [class.disabled]="isLoginPage">Customers</a>
-      <a class="nav-item nav-link" [routerLink]="['/orders']" [class.disabled]="isLoginPage">Orders</a>
-      <a class="nav-item nav-link" [routerLink]="['/products']" [class.disabled]="isLoginPage">Products</a>
-      <a class="nav-item nav-link" [routerLink]="['/about']" [class.disabled]="isLoginPage">About</a>
-      <a class="nav-item nav-link" [routerLink]="['/contact']" [class.disabled]="isLoginPage">Contact</a>
-      <a class="nav-item nav-link" [routerLink]="['/']" [class.disabled]="isLoginPage">Logout</a>
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['/customers']"
+        [class.disabled]="isLoginPage"
+        >Customers</a
+      >
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['/orders']"
+        [class.disabled]="isLoginPage"
+        >Orders</a
+      >
+
+      <a class="nav-item nav-link" [routerLink]="['/create-customer']">Create Customer</a>
+
+      <a class="nav-item nav-link" [routerLink]="['/modify-customer']">Update Customer</a>
+
+      <!-- <a
+        class="nav-item nav-link"
+        [routerLink]="['/products']"
+        [class.disabled]="isLoginPage"
+        >Products</a
+      > -->
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['/about']"
+        [class.disabled]="isLoginPage"
+        >About</a
+      >
+      <a
+      class="create-customer>"
+        class="nav-item nav-link"
+        [routerLink]="['/orders/:id']"
+        [class.disabled]="isLoginPage"
+        >Contact</a
+      >
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['/']"
+        [class.disabled]="isLoginPage"
+        >Logout</a
+      >
     </div>
   </div>
 </nav>
 
 <router-outlet></router-outlet>
+
+ <div class="footer">
+  <p>© 2023 <b> Shop Management Tool</b>. All rights reserved.</p>
+</div>

@@ -1,3 +1,4 @@
+import { AuthService } from './../core/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { catchError, forkJoin, map } from 'rxjs';
@@ -19,7 +20,8 @@ export class OrdersComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    public AuthService: AuthService
   ) {}
 
   ngOnInit() {
