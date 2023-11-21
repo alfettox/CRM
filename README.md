@@ -96,17 +96,3 @@ Configuration
 
     Frontend Configuration:
         Adjust frontend environment files for configuration settings.
-
-Contributing
-
-Contributions are welcome! Please follow the contribution guidelines.
-License
-
-This project is licensed under the MIT License.
-Acknowledgments
-
-    Mention any third-party libraries or resources used in your project.
-
-Contact
-
-For inquiries or support, please contact [Your Name] at [your.email@example.com].
