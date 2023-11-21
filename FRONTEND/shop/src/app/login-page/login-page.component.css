@@ -1,11 +1,14 @@
-h1{
+
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@1,500&display=swap');
+h2{
   font-size: 2em;
+  padding-top:1em;
 
 }
 
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100vh;
 }
@@ -68,4 +71,62 @@ h1{
 .list-of-dummy-suppliers ul{
   margin-top:0;
   font-size:.7em;
+}
+
+h2 {
+  text-align: center;
+  font-size:3em;
+  margin-top: 2em;
+  text-shadow: white 0px 0px 10px;
+  color:  #0072f4cb;
+  font-family: 'MuseoModerno', cursive;
+  margin:0;
+  
+}
+
+h3{
+  margin-top:.3em;
+  color:  #0072f4cb;
+  font-weight: bolder;
+  margin-bottom:0;
+  text-align: center;
+  margin-top:1.5em;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 0 0 5px white;
+}
+
+input {
+  padding: 0.5em;
+  height: 15px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+button{
+  margin-top:1em;
+  border-radius:15px;
+  border: 1px solid #0072f4cb;
+
+  font-weight: bold;
+  background-color: #0072f4cb;
+  color:white;
+}
+
+button:hover{
+  color: #0072f4cb;
+  background-color: white;
+  border: 1px solid #0072f4cb;
+}
+
+
+
+label{
+  margin-top:.3em;
+}
+
+
+
+
+img{
+  text-shadow: white 10px 10px 10px;  
 }

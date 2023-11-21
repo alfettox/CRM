@@ -9,6 +9,7 @@ import { FilterTextboxComponent } from './customers-list/filter-textbox.componen
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CreateCustomerComponent } from './create-customer/create-customer.component';
 import { ModifyCustomerComponent } from './modify-customer/modify-customer.component';
+import { PhoneNumberFormatPipe } from '../shared/phone.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +21,8 @@ import { ModifyCustomerComponent } from './modify-customer/modify-customer.compo
     CustomersListComponent,
     FilterTextboxComponent,
     CreateCustomerComponent,
-    ModifyCustomerComponent
+    ModifyCustomerComponent,
+    PhoneNumberFormatPipe
   ],
   exports: [CustomersComponent],
 })

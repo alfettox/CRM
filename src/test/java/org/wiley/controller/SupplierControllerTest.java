@@ -1,23 +1,16 @@
 package org.wiley.controller;
 
-import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.wiley.TestApplicationConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 import org.wiley.dao.CustomersRepo;
 import org.wiley.dao.OrdersRepo;
 import org.wiley.dao.ProductsRepo;
 import org.wiley.dao.SuppliersRepo;
-import org.wiley.entity.Customer;
-import org.wiley.entity.Order;
-import org.wiley.entity.Product;
 import org.wiley.entity.Supplier;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,8 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Wiley Edge
  **/
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = TestApplicationConfiguration.class)
+@SpringBootTest
 class SupplierControllerTest {
 
     @Autowired
@@ -43,29 +35,10 @@ class SupplierControllerTest {
     @Autowired
     CustomersRepo customersRepo;
 
-//    @BeforeAll
-//    public void setUp() {
-//        List<Supplier> suppliers = new ArrayList<>();
-//        for (Supplier supplier : suppliers) {
-//            suppliers.add(suppliersRepo.save(supplier));
-//
-//        }
-//        List<Product> products = new ArrayList<>();
-//        for (Product product : products) {
-//            products.add(productsRepo.save(product));
-//        }
-//
-//        List<Order> orders = new ArrayList<>();
-//        for (Order order : orders) {
-//            orders.add(ordersRepo.save(order));
-//        }
-//
-//        List<Customer> customers = new ArrayList<>();
-//        for (Customer customer : customers) {
-//            customers.add(customersRepo.save(customer));
-//        }
-//    }
-
+    @BeforeEach
+    public void clearTable() {
+        suppliersRepo.deleteAll();
+    }
 
     @Test
     void test_getAllSuppliers() {
@@ -93,6 +66,7 @@ class SupplierControllerTest {
         supplier.setSupplierId(555);
         supplier.setSupEmail("sup@suppliers.com");
         supplier.setSupPhoneNum(123456798);
+        suppliersRepo.save(supplier);
         List<Supplier> supplierListFromDao = suppliersRepo.findAll();
         assertEquals(1, supplierListFromDao.size());
         Supplier supplier1 = supplierListFromDao.get(0);
@@ -124,17 +98,22 @@ class SupplierControllerTest {
 
     }
 
+    @Transactional
     @Test
     void test_updateSupplier() {
         Supplier supplier = new Supplier();
         supplier.setSupplierId(555);
-        supplier.setSupEmail("testUpdateSup@mail.com");
         supplier.setSupPhoneNum(123456789);
         suppliersRepo.save(supplier);
+
         assertEquals(1, suppliersRepo.findAll().size());
-        Supplier supplier1 = suppliersRepo.getById(555);
-        supplier1.setSupEmail("thisIsTheNewEmail@testUpdate.com");
-        suppliersRepo.save(supplier1);
-        assertEquals("thisIsTheNewEmail@testUpdate.com", supplier1.getSupEmail());
+
+        Supplier savedSupplier = suppliersRepo.getById(555);
+        savedSupplier.setSupEmail("thisIsTheNewEmail@testUpdate.com");
+        suppliersRepo.save(savedSupplier);
+
+        Supplier updatedSupplier = suppliersRepo.getById(555);
+        assertEquals("thisIsTheNewEmail@testUpdate.com", updatedSupplier.getSupEmail());
     }
+
 }

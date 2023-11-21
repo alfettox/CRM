@@ -1,13 +1,13 @@
 <div class="container">
   <div class="form-container">
-    <img src="../../assets/images/logo.png" alt="logo" class="logo" width="250px"/>
-    <h1>SHOP MANAGEMENT TOOL</h1>
-    <h3>LOGIN</h3>
+    <img src="../../assets/images/logo_main.png" alt="logo" class="logo" width="250px"/>
+    <h2>SHOP MANAGEMENT TOOL</h2>
+
 
     <form (ngSubmit)="login()">
       <br />
       <div class="input-field">
-        <label for="email" id="emailLabel">Email:</label>
+        <h3>LOGIN WITH YOUR EMAIL</h3>
         <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="supplier@example.com"/>
 
         <div class="error-row" *ngIf="!isEmailValidSyntax() && email !== ''">

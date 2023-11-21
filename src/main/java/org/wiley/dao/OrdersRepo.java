@@ -10,13 +10,11 @@ import org.wiley.entity.Order;
 import java.util.List;
 
 /* *
- * Abdullah Tariq, Riyad Argoub, Giovanni De Franceschi
+ * Giovanni De Franceschi
  * Wiley Edge 2023
  * */
 @Repository
 public interface OrdersRepo extends JpaRepository<Order, Integer> {
-//    List<Order> findByCustomerId(int customerId);
-
 
     @Query("SELECT o FROM Order o WHERE o.customer.customerId = :customerId")
     List<Order> getOrdersByCustomerId(@Param("customerId") Integer customerId);

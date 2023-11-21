@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" *ngIf="isLoginPage===true">
+<br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="navbar-collapse collapse show" id="navbarNavAltMarkup">
     <div class="navbar-nav">
+      <img src="./../assets/images/logo_mini.png" alt="logo" width="50" height="50" />
       <a
         class="nav-item nav-link"
         [routerLink]="['/customers']"
@@ -18,12 +20,7 @@
 
       <a class="nav-item nav-link" [routerLink]="['/modify-customer']">Update Customer</a>
 
-      <!-- <a
-        class="nav-item nav-link"
-        [routerLink]="['/products']"
-        [class.disabled]="isLoginPage"
-        >Products</a
-      > -->
+
       <a
         class="nav-item nav-link"
         [routerLink]="['/about']"
@@ -33,7 +30,7 @@
       <a
       class="create-customer>"
         class="nav-item nav-link"
-        [routerLink]="['/orders/:id']"
+        [routerLink]="['/contact']"
         [class.disabled]="isLoginPage"
         >Contact</a
       >
@@ -50,5 +47,5 @@
 <router-outlet></router-outlet>
 
  <div class="footer">
-  <p>© 2023 <b> Shop Management Tool</b>. All rights reserved.</p>
+  <span>© 2023 <b> Shop Management Tool</b>. All rights reserved.</span>
 </div>

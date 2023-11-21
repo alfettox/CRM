@@ -1,23 +1,16 @@
 package org.wiley.controller;
 
-import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.wiley.TestApplicationConfiguration;
 import org.wiley.dao.CustomersRepo;
 import org.wiley.dao.OrdersRepo;
 import org.wiley.dao.ProductsRepo;
 import org.wiley.dao.SuppliersRepo;
-import org.wiley.entity.Order;
 import org.wiley.entity.Product;
 import org.wiley.entity.ProductCategory;
-import org.wiley.entity.Supplier;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -30,8 +23,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * Wiley Edge
  **/
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = TestApplicationConfiguration.class)
+//@ExtendWith(SpringExtension.class)
+@SpringBootTest // (classes = TestApplicationConfiguration.class)
 class ProductControllerTest {
     @Autowired
     SuppliersRepo suppliersRepo;
@@ -45,24 +38,10 @@ class ProductControllerTest {
     @Autowired
     CustomersRepo customersRepo;
 
-
-//    @BeforeAll
-//    public void setUp() {
-//        List<Room> rooms = roomDao.getAllRooms();
-//        for (Room room : rooms) {
-//            roomDao.deleteRoomById(room.getId());
-//        }
-//
-//        List<Employee> employees = employeeDao.getAllEmployees();
-//        for (Employee employee : employees) {
-//            employeeDao.deleteEmployeeById(employee.getId());
-//        }
-//
-//        List<Meeting> meetings = meetingDao.getAllMeetings();
-//        for (Meeting meeting : meetings) {
-//            meetingDao.deleteMeetingById(meeting.getId());
-//        }
-//    }
+    @BeforeEach
+    public void clearTable() {
+        productsRepo.deleteAll();
+    }
 
     @Test
     void test_getAllProducts() {
@@ -133,7 +112,7 @@ class ProductControllerTest {
         productsRepo.deleteById(238);
         List<Product> ProductListFromDao = productsRepo.findAll();
         assertEquals(0, ProductListFromDao.size());
-        productsRepo.deleteById(235);
+
 
 
     }

@@ -1,3 +1,11 @@
+html, body {
+  height: 100vh;
+}
+
+.navbar {
+  height: 100%;
+}
+
 .table-container {
     display: flex;
     justify-content: center;
@@ -50,4 +58,42 @@
     font-size:.7em;
   }
   
+  h2 {
+    text-align: center;
+    margin-top: 2em;
+    text-shadow: white 0px 0px 10px;
+    color:  #0072f4cb;
+  }
   
+  input {
+    padding: 0.5em;
+    height: 15px;
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  
+  
+  
+  label{
+    margin-top:1em;
+  }
+
+
+  h3{
+    text-align: center;
+    margin-top:.5em;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    color: white;
+  }
+
+  table tr {
+    border-bottom: 1px solid  lightgrey;
+  }
+
+  td{
+    text-align: center;
+  }
+
+ 

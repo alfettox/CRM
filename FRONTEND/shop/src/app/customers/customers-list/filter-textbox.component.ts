@@ -34,9 +34,6 @@ export class FilterTextboxComponent implements OnInit {
       this.router.navigateByUrl(currentUrl);
     });
   }
-
-  
-  
   
   
   @Output() changed: EventEmitter<string> = new EventEmitter<string>();
@@ -47,3 +44,4 @@ export class FilterTextboxComponent implements OnInit {
 
   }
 }
+

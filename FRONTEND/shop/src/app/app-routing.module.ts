@@ -7,6 +7,7 @@ import { ModifyCustomerComponent } from './customers/modify-customer/modify-cust
 import { ItemListComponent } from './item-list/item-list.component';
 import { AboutUsComponent } from './about/about-us/about-us.component';
 import { ContactComponent } from './contact/contact/contact.component';
+import { PhoneNumberFormatPipe } from './shared/phone.pipe';
 
 const routes: Routes = [
   { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule)},    //module
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: LoginPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'about', component: AboutUsComponent },
-  { path: 'contact', component: ContactComponent }
+  { path: 'contact', component: ContactComponent },
+  { path: 'orders/:customerId',  loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)},               
 
 
 ];
@@ -26,6 +28,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes), CustomersRoutingModule],
   exports: [RouterModule],
+  providers: [PhoneNumberFormatPipe],
 })
 export class AppRoutingModule {
   isLoginPage: boolean = false;

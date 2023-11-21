@@ -11,6 +11,7 @@ export interface ICustomer {
 }
 
 export interface IOrder {
+    products: IProduct[];
     orderId : number;
     quantity: number;
     productId: number;

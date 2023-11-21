@@ -22,6 +22,10 @@ import { PhoneNumberFormatPipe } from './shared/phone.pipe';
 import { FilterTextboxComponent } from './customers/customers-list/filter-textbox.component';
 import { IOrder, IProduct } from './shared/Interfaces';
 import { Location } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopupComponent } from './popup/popup.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+
 
 
 @NgModule({
@@ -31,7 +35,8 @@ import { Location } from '@angular/common';
     LoginPageComponent,
     AboutUsComponent,
     ContactComponent,   
-    PhoneNumberFormatPipe
+    // PhoneNumberFormatPipe,
+    PopupComponent
   ],
   imports: [
     FormsModule,
@@ -43,10 +48,11 @@ import { Location } from '@angular/common';
     SharedModule,
     CoreModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
-    
+    ToastrModule.forRoot(),
+    MatDialogModule,
+    GoogleMapsModule,
   ],
-  providers: [DataService, AuthService],
+  providers: [DataService, AuthService, PhoneNumberFormatPipe],
   bootstrap: [AppComponent]
 })
 

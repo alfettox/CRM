@@ -1,3 +1,10 @@
+html, body {
+  height: 100%;
+}
+.navbar {
+  height: 100%;
+}
+
 .container{
     padding:3em;
     margin-left: auto;
@@ -10,6 +17,8 @@
   main h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    color:  #0072f4cb;
+
   }
   
   main p {
@@ -40,3 +49,53 @@
     color: red;
   }
   
+  .container {
+    margin-top: 2em;
+    padding: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    background-color: white;
+    border-radius: 15px;
+  }
+  
+  main h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  main p {
+    margin-bottom: 15px;
+  }
+  
+  footer {
+    background-color: #333;
+    padding: 10px;
+    color: #fff;
+    display: flexbox;
+    justify-content: center;
+    width:auto
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  button{
+    margin-top:1em;
+    width:100px;
+    border-radius:15px;
+    border: 1px solid #0072f4cb;
+
+    font-weight: bold;
+    background-color: #0072f4cb;
+    color:white;
+  }
+  
+  button:hover{
+    color: #0072f4cb;
+    background-color: white;
+    border: 1px solid #0072f4cb;
+  }

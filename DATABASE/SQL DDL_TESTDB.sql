@@ -1,4 +1,4 @@
--- Giovanni De Franceschi, Abdullah Tariq, Riyad Argoub
+-- Giovanni De Franceschi
 -- WILEY EDGE - FINAL PROJECT - SHOPPING CART APP FULL STACK
 
 DROP DATABASE IF EXISTS shoppingcartTESTDB;

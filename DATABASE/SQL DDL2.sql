@@ -1,3 +1,10 @@
+-- Giovanni De Franceschi
+-- WILEY EDGE - FINAL PROJECT - SHOPPING CART APP FULL STACK
+
+DROP DATABASE IF EXISTS shoppingcart;
+
+CREATE DATABASE shoppingcart;
+USE shoppingcart;
 
 DROP TABLE IF EXISTS `customer` ;
 
@@ -129,5 +136,25 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+SELECT o.orderId, o.quantity, c.fName, c.lName, c.email, pc.productCat
+FROM orders AS o
+JOIN customer AS c ON o.customerId = c.customerId
+JOIN orderproduct AS op ON o.orderId = op.orderId
+JOIN product AS p ON op.productId = p.productId
+JOIN productsupplier AS ps ON p.productId = ps.productId
+JOIN supplier AS s ON ps.supplierId = s.supplierId
+JOIN productcategory AS pc ON p.productCatId = pc.catId
+WHERE s.supEmail = 'supplier@example.com';
 
+INSERT INTO product (productName, productPrice, productCatId)
+VALUES 
+  ('Product 1', 9.99, 19),
+  ('Product 2', 1999, 23),
+  ('Product 3', 1499, 25),
+  ('Product 4', 24.99, 22);
+
+INSERT INTO orderproduct (orderId, productId)
+SELECT 153, productId
+FROM product
+WHERE productId >= LAST_INSERT_ID() - 3 AND productId <= LAST_INSERT_ID();
 

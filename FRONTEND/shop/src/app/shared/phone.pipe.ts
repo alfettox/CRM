@@ -5,10 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PhoneNumberFormatPipe implements PipeTransform {
   transform(value: string): string {
-    const phoneNumber = value.replace(/\D/g, '');
+    const areaCode = value.substr(0, 3);
+    const firstPart = value.substr(3, 3);
+    const secondPart = value.substr(6, 3);
+    var randomNum = Math.floor(Math.random() * 10);
 
-    const formattedNumber = `(${phoneNumber.substring(0, 3)}) - ${phoneNumber.substring(3, 9)}`;
-
-    return formattedNumber;
+    return `(${areaCode}) ${firstPart}-${secondPart}${randomNum}`;
   }
 }

@@ -1,7 +1,7 @@
 package org.wiley.dao;
 
 /* *
- * Abdullah Tariq, Riyad Argoub, Giovanni De Franceschi
+ * Giovanni De Franceschi
  * Wiley Edge 2023
  * */
 

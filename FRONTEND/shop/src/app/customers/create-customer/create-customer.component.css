@@ -1,3 +1,27 @@
+html, body {
+  height: 100%;
+}
+.navbar {
+  height: 100%;
+}
+.navbar-nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.nav-item {
+  margin-right: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+h2{
+  text-align: center;
+  margin-top:2em;
+  text-shadow: white 0px 0px 10px;
+}
+
+
 .customer-form {
     display: table;
     margin: 0 auto;
@@ -21,3 +45,53 @@
     color: red;
   }
   
+  h2 {
+    text-align: center;
+    margin-top: 1em;
+    text-shadow: white 0px 0px 10px;
+    color:  #0072f4cb;
+
+  }
+  
+  input {
+    padding: 0.5em;
+    height: 12px;
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  
+  
+  
+  label{
+    margin-top:1em;
+  }
+
+  
+  h3{
+    text-align: center;
+    margin-top:.5em;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    color: white;
+  }
+
+  button{
+    margin-top:1em;
+    border-radius:15px;
+    border: 1px solid #0072f4cb;
+
+    font-weight: bold;
+    background-color: #0072f4cb;
+    color:white;
+  }
+  
+  button:hover{
+    color: #0072f4cb;
+    background-color: white;
+    border: 1px solid #0072f4cb;
+  }
+
+  table tr {
+    border-bottom: 1px solid  lightgrey;
+  }

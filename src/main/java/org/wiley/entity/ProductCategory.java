@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 /* *
- * Abdullah Tariq, Riyad Argoub, Giovanni De Franceschi
+ * Giovanni De Franceschi
  * Wiley Edge 2023
  * */
 

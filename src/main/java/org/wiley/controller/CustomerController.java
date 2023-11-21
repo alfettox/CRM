@@ -12,7 +12,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 /* *
- * Abdullah Tariq, Riyad Argoub, Giovanni De Franceschi
+ * Giovanni De Franceschi
  * Wiley Edge 2023
  * */
 

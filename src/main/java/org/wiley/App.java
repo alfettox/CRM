@@ -1,9 +1,9 @@
 package org.wiley;
 
 /* *
-  * Abdullah Tariq, Riyad Argoub, Giovanni De Franceschi
-  * Wiley Edge 2023
-  * */
+   * Giovanni De Franceschi
+   * Wiley Edge 2023
+   * */
 
   import org.springframework.boot.SpringApplication;
   import org.springframework.boot.autoconfigure.SpringBootApplication;

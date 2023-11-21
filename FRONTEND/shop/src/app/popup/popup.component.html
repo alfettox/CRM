@@ -1,0 +1,12 @@
+<div class="popup-container">
+  <button mat-button (click)="close()">x</button>
+  <h1>Shipping address</h1>
+  <div #mapContainer id="map"></div>
+  <google-map id='map' [center]="initialCoordinates" [zoom]="mapConfigurations.zoom" width="400px" height="400px">
+    <map-marker [position]="initialCoordinates" [title]="'Placeholder'" [options]="{ draggable: true }">
+      <map-info-window>
+        <p>SHIP HERE</p>
+      </map-info-window>
+    </map-marker>
+  </google-map>
+</div>

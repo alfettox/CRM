@@ -1,7 +1,7 @@
 package org.wiley.controller;
 
 /* *
- * Abdullah Tariq, Riyad Argoub, Giovanni De Franceschi
+ * Giovanni De Franceschi
  * Wiley Edge 2023
  * */
 
@@ -61,7 +61,7 @@ public class OrderController {
         return new ResponseEntity<Order>(order, HttpStatus.OK);
     }
 
-    @GetMapping("/cost/{customerId}")
+    @GetMapping("/customer/{customerId}")
     public ResponseEntity<List<Order>> getOrdersByCustomerId(@PathVariable Integer customerId) {
         List<Order> orders = ordersRepo.getOrdersByCustomerId(customerId);
         if (!orders.isEmpty()) {

@@ -4,29 +4,24 @@ import { ICustomer, IProduct } from '../../shared/Interfaces';
 import { SorterService } from '../../core/sorter.service';
 import { CustomerDataService } from '../../core/customerDataService'; //TODO NOT WORKING AS EXPECTED
 import { OrderService } from './../../order.service';
-
+import { PhoneNumberFormatPipe } from './../../shared/phone.pipe';
 
 @Component({
   selector: 'app-customers-list',
   templateUrl: './customers-list.component.html',
 })
 export class CustomersListComponent implements OnInit {
-reloadPage() {
-throw new Error('Method not implemented.');
-}
+  reloadPage() {}
   @Input() customers: ICustomer[] = [];
   @Input() filteredCustomers: ICustomer[] = [];
   customersOrderTotal: number = 0;
   currencyCode: string = 'CAD';
-  
 
   constructor(
     private sorterService: SorterService,
     private customerDataService: CustomerDataService,
     private dataService: DataService,
     private orderService: OrderService
-
-
   ) {}
 
   ngOnInit() {
@@ -37,13 +32,15 @@ throw new Error('Method not implemented.');
     return this.orderService.calculateOrderTotal(order, products);
   }
 
-  calculateOrders(customer :ICustomer){
-    this.dataService.getOrdersByCustomerId(customer.customerId).subscribe((orders) => {
-      customer.orderTotal = orders.reduce((total, order) => {
-        return total + order.quantity;
-      }, 0);
-      this.calculateAllOrdersOnCurrPage();
-    });
+  calculateOrders(customer: ICustomer) {
+    this.dataService
+      .getOrdersByCustomerId(customer.customerId)
+      .subscribe((orders) => {
+        customer.orderTotal = orders.reduce((total, order) => {
+          return total + order.quantity;
+        }, 0);
+        this.calculateAllOrdersOnCurrPage();
+      });
   }
 
   calculateAllOrdersOnCurrPage() {
@@ -54,32 +51,35 @@ throw new Error('Method not implemented.');
 
   filter(data: string) {
     let tempFilteredCustomers: ICustomer[];
-  
+
     if (data) {
-      tempFilteredCustomers = this.filteredCustomers.filter((
-        cust: ICustomer) => {
-        return (
-          cust.customerId.toString().toLowerCase().includes(data.toLowerCase()) ||
-          cust.fName.toLowerCase().includes(data.toLowerCase()) ||
-          cust.lName.toLowerCase().includes(data.toLowerCase()) ||
-          cust.phoneNum.toLowerCase().includes(data.toLowerCase()) ||
-          cust.shippingAddress.toLowerCase().includes(data.toLowerCase()) ||
-          cust.email.toLowerCase().includes(data.toLowerCase()) ||
-          (cust.orderTotal !== undefined &&
-            cust.orderTotal !== null &&
-            cust.orderTotal.toString().includes(data)) //for each customer call this dataservice method getOrdersByCustomerId
-        );
-      });
+      tempFilteredCustomers = this.filteredCustomers.filter(
+        (cust: ICustomer) => {
+          return (
+            cust.customerId
+              .toString()
+              .toLowerCase()
+              .includes(data.toLowerCase()) ||
+            cust.fName.toLowerCase().includes(data.toLowerCase()) ||
+            cust.lName.toLowerCase().includes(data.toLowerCase()) ||
+            cust.phoneNum.toLowerCase().includes(data.toLowerCase()) ||
+            cust.shippingAddress.toLowerCase().includes(data.toLowerCase()) ||
+            cust.email.toLowerCase().includes(data.toLowerCase()) ||
+            (cust.orderTotal !== undefined &&
+              cust.orderTotal !== null &&
+              cust.orderTotal.toString().includes(data))
+          );
+        }
+      );
     } else {
       tempFilteredCustomers = [...CustomerDataService.initialFilteredCustomers];
     }
-  
-    this.filteredCustomers = tempFilteredCustomers; //TODO NOT RESTORING THE INITIAL FILTERED CUSTOMERS WHEN INPUT DELETED
+
+    this.filteredCustomers = tempFilteredCustomers;
     this.calculateAllOrdersOnCurrPage();
   }
-  
+
   sort(prop: string) {
     this.sorterService.sort(this.filteredCustomers, prop);
   }
-  
 }

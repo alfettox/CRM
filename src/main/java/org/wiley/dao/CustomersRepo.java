@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.wiley.entity.Customer;
 
 /* *
- * Abdullah Tariq, Riyad Argoub, Giovanni De Franceschi
+ * Giovanni De Franceschi
  * Wiley Edge 2023
  * */
 
